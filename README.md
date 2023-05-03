@@ -10,6 +10,9 @@
 * [Third Person camera **Medium**](https://www.youtube.com/watch?v=YV5KOZHsIz4)
 * [Third Person camera **Advanced**](https://www.youtube.com/watch?v=537B1kJp9YQ)
 
+### Game Design
+* [Terrain drawing](https://www.youtube.com/watch?v=DbJB9534PZQ)
+
 ### Game mechanics
 * [Fade Between Scenes](https://www.youtube.com/watch?v=Oadq-IrOazg)
 * [Camera shake](https://www.youtube.com/watch?v=9A9yj8KnM8c)
