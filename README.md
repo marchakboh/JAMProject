@@ -28,7 +28,7 @@
 * [See how animate character in asset package](https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526)
 * [How add some animation to different body parts](https://www.youtube.com/watch?v=LEwYmFT3xDk&ab_channel=CodeMonkey)
 
-### Free assets
+## Free assets
 #### UI
 * [Freepik](https://www.freepik.com/free-photos-vectors/game-ui-assets)
 * [Vecteezy](https://www.vecteezy.com/free-vector/game-ui)
