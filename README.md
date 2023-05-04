@@ -22,6 +22,17 @@
 * [Heath Bar](https://www.youtube.com/watch?v=BLfNP4Sc_iA)
 * [Minimap](https://www.youtube.com/watch?v=28JTTXqMvOU)
 * [Main Menu](https://www.youtube.com/watch?v=zc8ac_qUXQY)
+* [Collider Detector](https://www.youtube.com/watch?v=UUJMGQTT5ts)
+* [Particles Playlist](https://www.youtube.com/watch?v=VYOgWJFiifo&list=PLrnLkBMB2q325LmhzxJtCD6B8QOH90USj)
+* [Particles 2](https://www.youtube.com/watch?v=xenW67bXTgM)
+* [Particles 3](https://www.youtube.com/watch?v=EKo1SLQD9KI)
+* [Matterials **beginer**](https://www.youtube.com/watch?v=aiTl7B2xTmA)
+* [Matterials **graph**](https://www.youtube.com/watch?v=Ar9eIn4z6XE)
+* [Matterials 3](https://www.youtube.com/watch?v=zNC65seEadI)
+* [Tornado effect](https://www.youtube.com/watch?v=Qyh9RPxeKcA)
+* [Stylized Water](https://www.youtube.com/watch?v=MHdDUqJHJxM)
+* [Shield Effect](https://www.youtube.com/watch?v=IZAzckJaSO8)
+* [How to Talk to NPCs](https://www.youtube.com/watch?v=LdoImzaY6M4)
 
 ### Player Logic
 * [Animate Character](https://www.youtube.com/watch?v=FF6kezDQZ7s)
