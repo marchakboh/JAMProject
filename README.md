@@ -23,6 +23,11 @@
 * [Minimap](https://www.youtube.com/watch?v=28JTTXqMvOU)
 * [Main Menu](https://www.youtube.com/watch?v=zc8ac_qUXQY)
 
+### Player Logic
+* [Animate Character](https://www.youtube.com/watch?v=FF6kezDQZ7s)
+* [See how animate character in asset package](https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526)
+* [How add some animation to different body parts](https://www.youtube.com/watch?v=LEwYmFT3xDk&ab_channel=CodeMonkey)
+
 ## How to
 ### Export game
 * Go to File
