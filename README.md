@@ -28,6 +28,26 @@
 * [See how animate character in asset package](https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526)
 * [How add some animation to different body parts](https://www.youtube.com/watch?v=LEwYmFT3xDk&ab_channel=CodeMonkey)
 
+### Free assets
+#### UI
+* [Freepik](https://www.freepik.com/free-photos-vectors/game-ui-assets)
+* [Vecteezy](https://www.vecteezy.com/free-vector/game-ui)
+* [itch.io](https://itch.io/game-assets/free/tag-gui)
+
+#### 3D
+* [Mixamo](https://www.mixamo.com/#/)
+* [Quaternius](https://quaternius.com/index.html)
+* [Kenney](https://www.kenney.nl/assets/category:3D)
+* [itch.io](https://itch.io/game-assets/free/tag-3d)
+* [Unity Asset Store](https://assetstore.unity.com/packages/templates/tutorials/3d-game-kit-115747)
+* [OpenGamerArt](https://opengameart.org/art-search-advanced?keys=&field_art_type_tid%5B%5D=10&sort_by=count&sort_order=DESC)
+
+### Materials
+* [MaterialMaker](https://www.materialmaker.org/)
+
+### Sound
+* [FreeSound](https://freesound.org/browse/)
+
 ## How to
 ### Export game
 * Go to File
