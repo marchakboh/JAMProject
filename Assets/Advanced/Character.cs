@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
     [SerializeField] private float GravityValue = -9.81f;
     [SerializeField] private bool IsGamepad = false;
     [SerializeField] private float MovementSmooting = 10f;
-    [SerializeField] private float RotationSmoothing = 0.05f;
+    [SerializeField] private float RotationSmoothing = 2f;
     [SerializeField] private GameObject CinemachineCamera;
     [SerializeField] private GameObject MainCamera;
 

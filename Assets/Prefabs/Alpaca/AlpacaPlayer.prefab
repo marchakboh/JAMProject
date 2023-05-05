@@ -129,6 +129,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 8540d2d5-9569-465b-af78-890b149dff2a
     m_ActionName: Controls/Sprint[/XInputControllerWindows/leftTrigger,/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6a75b8cd-0ede-44e4-89ef-c91097734624
+    m_ActionName: Controls/Pause[/Keyboard/escape,/XInputControllerWindows/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controls
@@ -152,7 +156,7 @@ MonoBehaviour:
   GravityValue: -9.81
   IsGamepad: 0
   MovementSmooting: 10
-  RotationSmoothing: 0.05
+  RotationSmoothing: 2
   CinemachineCamera: {fileID: 0}
   MainCamera: {fileID: 0}
 --- !u!1 &611018384062458868
