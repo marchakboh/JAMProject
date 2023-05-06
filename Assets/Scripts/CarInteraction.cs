@@ -20,9 +20,9 @@ public class CarInteraction : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.GameObject == alpacaPlayer && alpacaPlayer.input.Controls.Interact.WasPressedThisFrame)
+        if (other.gameObject.tag == "Player")
         {
-            
+            successParticles.Play();
         }
     }
 }
