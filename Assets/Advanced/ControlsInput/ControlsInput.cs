@@ -282,6 +282,15 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BuyButtonPressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""2cd31bca-124f-4eb3-9406-84cf5dcf1bb7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -326,6 +335,28 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Traditional"",
                     ""action"": ""MoveActionLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01836e57-c46c-4be3-93c6-32ddc8417184"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Traditional"",
+                    ""action"": ""BuyButtonPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0a829e4-7c20-4f87-89ce-61fc336671ca"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""BuyButtonPressed"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -374,6 +405,7 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
         m_ShopAction = asset.FindActionMap("ShopAction", throwIfNotFound: true);
         m_ShopAction_MoveActionRight = m_ShopAction.FindAction("MoveActionRight", throwIfNotFound: true);
         m_ShopAction_MoveActionLeft = m_ShopAction.FindAction("MoveActionLeft", throwIfNotFound: true);
+        m_ShopAction_BuyButtonPressed = m_ShopAction.FindAction("BuyButtonPressed", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -523,12 +555,14 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
     private List<IShopActionActions> m_ShopActionActionsCallbackInterfaces = new List<IShopActionActions>();
     private readonly InputAction m_ShopAction_MoveActionRight;
     private readonly InputAction m_ShopAction_MoveActionLeft;
+    private readonly InputAction m_ShopAction_BuyButtonPressed;
     public struct ShopActionActions
     {
         private @ControlsInput m_Wrapper;
         public ShopActionActions(@ControlsInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveActionRight => m_Wrapper.m_ShopAction_MoveActionRight;
         public InputAction @MoveActionLeft => m_Wrapper.m_ShopAction_MoveActionLeft;
+        public InputAction @BuyButtonPressed => m_Wrapper.m_ShopAction_BuyButtonPressed;
         public InputActionMap Get() { return m_Wrapper.m_ShopAction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -544,6 +578,9 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
             @MoveActionLeft.started += instance.OnMoveActionLeft;
             @MoveActionLeft.performed += instance.OnMoveActionLeft;
             @MoveActionLeft.canceled += instance.OnMoveActionLeft;
+            @BuyButtonPressed.started += instance.OnBuyButtonPressed;
+            @BuyButtonPressed.performed += instance.OnBuyButtonPressed;
+            @BuyButtonPressed.canceled += instance.OnBuyButtonPressed;
         }
 
         private void UnregisterCallbacks(IShopActionActions instance)
@@ -554,6 +591,9 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
             @MoveActionLeft.started -= instance.OnMoveActionLeft;
             @MoveActionLeft.performed -= instance.OnMoveActionLeft;
             @MoveActionLeft.canceled -= instance.OnMoveActionLeft;
+            @BuyButtonPressed.started -= instance.OnBuyButtonPressed;
+            @BuyButtonPressed.performed -= instance.OnBuyButtonPressed;
+            @BuyButtonPressed.canceled -= instance.OnBuyButtonPressed;
         }
 
         public void RemoveCallbacks(IShopActionActions instance)
@@ -602,5 +642,6 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
     {
         void OnMoveActionRight(InputAction.CallbackContext context);
         void OnMoveActionLeft(InputAction.CallbackContext context);
+        void OnBuyButtonPressed(InputAction.CallbackContext context);
     }
 }

@@ -10,7 +10,7 @@ public class ShopTest : MonoBehaviour
     private ControlsInput input;
     private bool isRightPress = false;
     private bool isLeftPress = false;
-
+    private bool isBuybuttonPress = false;
     private int startIndex = 1;
 
     private void Awake()
@@ -27,6 +27,9 @@ public class ShopTest : MonoBehaviour
 
         input.ShopAction.MoveActionLeft.performed += ctx => isLeftPress = true;
         input.ShopAction.MoveActionLeft.canceled  += ctx => isLeftPress = false;
+        
+        input.ShopAction.BuyButtonPressed.performed += ctx => isBuybuttonPress = true;
+        input.ShopAction.BuyButtonPressed.canceled  += ctx => isBuybuttonPress = false;
     }
 
     private void OnEnable()
@@ -56,6 +59,11 @@ public class ShopTest : MonoBehaviour
                 startIndex++;
             
             isLeftPress = false;
+        }
+        else if(isBuybuttonPress)
+        {
+            _shop.BuyCenterElement();
+            isBuybuttonPress = false;
         }
         //ToDo to player controller
       /*  else if(Input.GetKeyDown(KeyCode.E)){
