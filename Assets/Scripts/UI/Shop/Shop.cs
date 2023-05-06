@@ -67,4 +67,7 @@ public class Shop : MonoBehaviour
         }
         return false;
     }
+    public void BuyCenterElement(){
+        _showcase.transform.GetChild(_currentIndex).GetComponent<ShopItem>().BuyItem();
+    }
 }
