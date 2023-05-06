@@ -1,62 +1,91 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
+    [SerializeField] private GameObject PlayerCharacter;
+    [SerializeField] private GameObject pauseMenuUi;
 
-    private InputAction pause;
-    public ControlsInput playerControls;
+    private ControlsInput.PauseActions actions;
+    private int buttonIndex = 0;
 
-    private GameObject go;
-
-    public GameObject pauseMenuUi;
-
-    void Awake()
+    public void SetActions(ControlsInput.PauseActions pause_actions)
     {
-        playerControls = new ControlsInput();
-        pause = playerControls.Controls.Pause;
-        pause.Enable();
-        go = GameObject.FindGameObjectWithTag("Player");
+        actions = pause_actions;
 
+        actions.Up.performed += TrySelectNextButtonUp;
+        actions.Down.performed += TrySelectNextButtonDown;
+        actions.Select.performed += TrySelectButton;
+        actions.Close.performed += ClosePause;
     }
 
-    public void Update()
-    {  
-      if (pause.WasPressedThisFrame())
+    private void TrySelectNextButtonUp(InputAction.CallbackContext ctx)
+    {
+        if (buttonIndex == 0) return;
+
+        for (int index = 0; index < pauseMenuUi.transform.childCount; index++)
         {
-            
-            Debug.Log("Paused");
-            if (GameIsPaused)
+            GameObject buttonObj = pauseMenuUi.transform.GetChild(index).gameObject;
+            if (buttonObj && index == buttonIndex - 1)
             {
-                Resume();
-            }
-            else
-            {
-                Pause();
+                Button button = buttonObj.GetComponent<Button>();
+                button.Select();
+                buttonIndex--;
+                break;
             }
         }
+    }
+
+    private void TrySelectNextButtonDown(InputAction.CallbackContext ctx)
+    {
+        if (buttonIndex == (pauseMenuUi.transform.childCount - 1)) return;
+
+        for (int index = 0; index < pauseMenuUi.transform.childCount; index++)
+        {
+            GameObject buttonObj = pauseMenuUi.transform.GetChild(index).gameObject;
+            if (buttonObj && index == buttonIndex + 1)
+            {
+                Button button = buttonObj.GetComponent<Button>();
+                button.Select();
+                buttonIndex++;
+                break;
+            }
+        }
+    }
+
+    private void TrySelectButton(InputAction.CallbackContext ctx)
+    {
+        for (int index = 0; index < pauseMenuUi.transform.childCount; index++)
+        {
+            GameObject buttonObj = pauseMenuUi.transform.GetChild(index).gameObject;
+            if (buttonObj && index == buttonIndex)
+            {
+                Button button = buttonObj.GetComponent<Button>();
+                button.onClick.Invoke();
+            }
+        }
+    }
+
+    private void ClosePause(InputAction.CallbackContext ctx)
+    {
+        Resume();
     }
 
     public void Resume()
     {
         pauseMenuUi.SetActive(false);
         Time.timeScale = 1f;
-        GameIsPaused = false;
-        go.GetComponent<AlpacaCharacter>().enabled = true;
+        PlayerCharacter.GetComponent<AlpacaCharacter>().enabled = true;
     }
 
     public void Pause()
     {
         pauseMenuUi.SetActive(true);
         Time.timeScale = 0f;
-        GameIsPaused = true;
-        go.GetComponent<AlpacaCharacter>().enabled = false;
-        playerControls.Enable();
+        PlayerCharacter.GetComponent<AlpacaCharacter>().enabled = false;
     }
 
     public void LoadMenu()
@@ -67,7 +96,6 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quitting game.");
         Application.Quit();
     }
 }

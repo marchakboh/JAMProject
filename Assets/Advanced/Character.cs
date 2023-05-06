@@ -62,13 +62,12 @@ public class Character : MonoBehaviour
         input.Sequence.X.performed += OnX;
 
         input.Controls.Pause.performed += TryOpenPauseMenu;
-
         input.Controls.Interact.performed += TryInteractWithCar;
 
         cameraControl = CinemachineCamera.GetComponent<CameraLook>();
 
-        //SequenceCanvasObject.SetActive(false);
         input.Sequence.Disable();
+        input.Pause.Disable();
     }
 
     private void OnEnable()
@@ -308,6 +307,15 @@ public class Character : MonoBehaviour
         if (IsSequenceNow) return;
 
         PauseMenuObject.SetActive(true);
+        PauseMenu menu = PauseMenuObject.GetComponent<PauseMenu>();
+        if (menu)
+        {
+            menu.SetActions(input.Pause);
+            menu.Pause();
+            input.Pause.Enable();
+            input.Controls.Disable();
+            input.Sequence.Disable();
+        }
     }
 
     public void FailSequence()
