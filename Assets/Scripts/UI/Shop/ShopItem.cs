@@ -14,7 +14,10 @@ public class ShopItem : MonoBehaviour
     private Button _buyButton;
     [SerializeField]
     private TextMeshProUGUI _price;
+    [SerializeField]
+    private TextMeshProUGUI _bonus;
 
+    private int bonus = 0;
     private int price = 0;
     private bool _active;
     public bool Active
@@ -31,7 +34,8 @@ public class ShopItem : MonoBehaviour
         _mainImage.GetComponent<Image>().sprite = dataObject.Image;
         _name.text = dataObject.Name;
         price = dataObject.Price;
-        if (isBought)
+        bonus = dataObject.Bonus;
+        if (!isBought)
         {
             _buyButton.GetComponent<Button>().enabled = false;
             _price.text = "Sold";
@@ -40,6 +44,7 @@ public class ShopItem : MonoBehaviour
         {
             _price.text = price.ToString();
         }
+        _bonus.text = ("Respect +" + bonus.ToString());
     }
 
 
