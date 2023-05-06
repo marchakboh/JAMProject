@@ -6,7 +6,8 @@ using UnityEngine.InputSystem.Utilities;
 public class CarInteraction : MonoBehaviour
 {
     public GameObject alpacaPlayer;
-    [SerializeField] ParticleSystem successParticles;
+    [SerializeField] ParticleSystem rings;
+    [SerializeField] ParticleSystem coins;
     private InputAction interact;
     public ControlsInput playerControls;
     bool onceEntered = false;
@@ -17,8 +18,9 @@ public class CarInteraction : MonoBehaviour
     {
         playerControls = new ControlsInput();
         interact = playerControls.Controls.Interact;
-        successParticles.Stop();
         interact.Enable();
+        rings.Stop();
+        coins.Stop();
     }
 
     void TryInteract()
@@ -26,7 +28,8 @@ public class CarInteraction : MonoBehaviour
         if(canInteract)
         {
             Debug.Log("Lama is here");
-            successParticles.Play();
+            rings.Play();
+            coins.Play();
             canInteract = false;
             onceEntered = true;
         }
