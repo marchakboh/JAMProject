@@ -35,6 +35,8 @@ public class Character : MonoBehaviour
     protected float targetRotation = 0.0f;
     protected float rotationVelocity;
 
+    private CarInteraction currentCar = null;
+
     private void Awake()
     {
         controller  = GetComponent<CharacterController>();
@@ -51,8 +53,9 @@ public class Character : MonoBehaviour
         input.Controls.Jump.performed += ctx => IsJumpPress = true;
         input.Controls.Jump.canceled  += ctx => IsJumpPress = false;
 
+        input.Controls.Interact.performed += TryInteractWithCar;
+
         cameraControl = CinemachineCamera.GetComponent<CameraLook>();
-        input.Controls.Interact.Enable();
     }
 
     private void OnEnable()
@@ -154,6 +157,23 @@ public class Character : MonoBehaviour
         {
             animator.SetBool("Grounded", false);
         }
+    }
+
+    public void SetCurrentInteractable(CarInteraction carObject)
+    {
+        currentCar = carObject;
+    }
+
+    public void RemoveCurrentInteractable()
+    {
+        currentCar = null;
+    }
+
+    private void TryInteractWithCar(InputAction.CallbackContext ctx)
+    {
+        if (!currentCar) return;
+        
+        currentCar.TryHit();
     }
 
     public void OnInputSourceChanged(PlayerInput playerInput)
