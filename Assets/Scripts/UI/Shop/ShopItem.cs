@@ -35,7 +35,7 @@ public class ShopItem : MonoBehaviour
         _name.text = dataObject.Name;
         price = dataObject.Price;
         bonus = dataObject.Bonus;
-        if (!isBought)
+        if (isBought)
         {
             _buyButton.GetComponent<Button>().enabled = false;
             _price.text = "Sold";
