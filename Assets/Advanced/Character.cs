@@ -63,7 +63,7 @@ public class Character : MonoBehaviour
 
         cameraControl = CinemachineCamera.GetComponent<CameraLook>();
 
-        SequenceCanvasObject.SetActive(false);
+        //SequenceCanvasObject.SetActive(false);
         input.Sequence.Disable();
     }
 

@@ -7,13 +7,13 @@ using System;
 public class SequenceItem : MonoBehaviour
 {
     [SerializeField] private string action_key;
-    [SerializeField] private float CircleDelta = 0.001f;
 
     private Transform red_circle;
     private Transform green_circle;
     private Transform main_image;
 
     private int red_size = 200;
+    private float CircleDelta = 0.05f;
 
     public event Action OnFailed;
     private bool isActive = false;
@@ -35,6 +35,7 @@ public class SequenceItem : MonoBehaviour
     {
         transform.gameObject.SetActive(true);
         isActive = true;
+        Debug.Log("Activate");
     }
 
     public bool IsKey(string key)
@@ -52,6 +53,7 @@ public class SequenceItem : MonoBehaviour
     {
         if (isActive)
         {
+            Debug.Log("Activate");
             red_transform.localScale = new Vector3(red_transform.localScale.x - CircleDelta, red_transform.localScale.y - CircleDelta, red_transform.localScale.z - CircleDelta);
 
             if (red_transform.localScale.x < min_size)
@@ -62,6 +64,11 @@ public class SequenceItem : MonoBehaviour
         }
     }
 
+    public void SetCircleDelta(float delta)
+    {
+        CircleDelta = delta;
+    }
+
     public void ResetPosition(int x, int y)
     {
         RectTransform tr = transform.GetComponent<RectTransform>();
@@ -70,6 +77,7 @@ public class SequenceItem : MonoBehaviour
 
     private void Deactivate()
     {
+        Debug.Log("Dea");
         isActive = false;
         red_transform.localScale = Vector3.one;
         transform.gameObject.SetActive(false);

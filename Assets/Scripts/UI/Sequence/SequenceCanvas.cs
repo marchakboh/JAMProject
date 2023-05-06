@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SequenceCanvas : MonoBehaviour
 {
+    [SerializeField] private float CirleDelta = 0.001f;
     [SerializeField] private GameObject[] items;
     
     private Character player_character;
@@ -24,11 +25,13 @@ public class SequenceCanvas : MonoBehaviour
         int x_pos = Random.Range(-250, 250);
         int y_pos = Random.Range(-100, 60);
         item.ResetPosition(x_pos, y_pos);
+        item.SetCircleDelta(CirleDelta);
         item.ActivateSequence();
     }
 
     public bool ActionPerform(string key)
     {
+        Debug.Log("Activate 2");
         if (!current_sequence_object) return false;
 
         SequenceItem item = current_sequence_object.GetComponent<SequenceItem>();
