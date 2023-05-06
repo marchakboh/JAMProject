@@ -16,6 +16,7 @@ public class Character : MonoBehaviour
     [SerializeField] private GameObject CinemachineCamera;
     [SerializeField] private GameObject MainCamera;
     [SerializeField] private GameObject SequenceCanvasObject;
+    [SerializeField] private GameObject PauseMenuObject;
 
     private CharacterController controller;
     private PlayerInput playerInput;
@@ -35,6 +36,7 @@ public class Character : MonoBehaviour
     protected float acceleration = 0.0f;
     protected float targetRotation = 0.0f;
     protected float rotationVelocity;
+    private bool IsSequenceNow = false;
 
     private GameObject currentCar = null;
 
@@ -58,6 +60,8 @@ public class Character : MonoBehaviour
         input.Sequence.B.performed += OnB;
         input.Sequence.Y.performed += OnY;
         input.Sequence.X.performed += OnX;
+
+        input.Controls.Pause.performed += TryOpenPauseMenu;
 
         input.Controls.Interact.performed += TryInteractWithCar;
 
@@ -296,6 +300,14 @@ public class Character : MonoBehaviour
 
         input.Controls.Disable();
         input.Sequence.Enable();
+        IsSequenceNow = true;
+    }
+
+    private void TryOpenPauseMenu(InputAction.CallbackContext ctx)
+    {
+        if (IsSequenceNow) return;
+
+        PauseMenuObject.SetActive(true);
     }
 
     public void FailSequence()
@@ -303,6 +315,7 @@ public class Character : MonoBehaviour
         cameraControl.ChangeLookAt(transform.Find("CameraPoint"));
         input.Controls.Enable();
         input.Sequence.Disable();
+        IsSequenceNow = false;
         Debug.Log("Fail");
     }
 
@@ -311,6 +324,7 @@ public class Character : MonoBehaviour
         RemoveCurrentInteractable();
         input.Controls.Enable();
         input.Sequence.Disable();
+        IsSequenceNow = false;
         Debug.Log("Success");
     }
 
