@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
     private CharacterController controller;
     private PlayerInput playerInput;
-    private ControlsInput input;
+    public ControlsInput input;
     private Animator animator;
 
     private Vector2 movement;

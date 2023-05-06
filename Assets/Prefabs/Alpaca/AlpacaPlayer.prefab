@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 611018383919590756}
   - component: {fileID: 611018383919590757}
   - component: {fileID: 611018383919590758}
+  - component: {fileID: 3509214697703838939}
   m_Layer: 0
   m_Name: AlpacaPlayer
   m_TagString: Player
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611018383919590759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.627}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -163,6 +164,19 @@ MonoBehaviour:
   RotationSmoothing: 2
   CinemachineCamera: {fileID: 0}
   MainCamera: {fileID: 0}
+--- !u!65 &3509214697703838939
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611018383919590759}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.38312584, y: 1.9017245, z: 1.6720285}
+  m_Center: {x: -0.30843696, y: 0.45086223, z: 0.33601427}
 --- !u!1 &611018384062458868
 GameObject:
   m_ObjectHideFlags: 0

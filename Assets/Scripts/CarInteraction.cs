@@ -22,6 +22,7 @@ public class CarInteraction : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("lama is here");
             successParticles.Play();
         }
     }
