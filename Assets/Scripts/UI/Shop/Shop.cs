@@ -11,10 +11,11 @@ public class Shop : MonoBehaviour
     private GameObject _showcase;
     [SerializeField]
     private int _visibleItemsCount = 3;
-
+    
     private int _itemsCount = 0;
     private int _currentIndex = 1;
     public bool isAlive = false;
+    
     private void Awake()
     {
         isAlive = true;
