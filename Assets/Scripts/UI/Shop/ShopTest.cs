@@ -65,13 +65,5 @@ public class ShopTest : MonoBehaviour
             _shop.BuyCenterElement();
             isBuybuttonPress = false;
         }
-        //ToDo to player controller
-      /*  else if(Input.GetKeyDown(KeyCode.E)){
-            if (!_shop.isAlive)
-            {
-                _shop.Open();
-            }
-            else _shop.Close();
-        }*/
     }
 }

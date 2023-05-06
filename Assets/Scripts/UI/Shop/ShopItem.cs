@@ -16,7 +16,7 @@ public class ShopItem : MonoBehaviour
     private TextMeshProUGUI _price;
     [SerializeField]
     private TextMeshProUGUI _bonus;
-
+    private MoneyScript info;
     private int bonus = 0;
     private int price = 0;
     private bool _active;
@@ -35,6 +35,7 @@ public class ShopItem : MonoBehaviour
         _name.text = dataObject.Name;
         price = dataObject.Price;
         bonus = dataObject.Bonus;
+        
         if (isBought)
         {
             _buyButton.GetComponent<Button>().enabled = false;
@@ -50,8 +51,19 @@ public class ShopItem : MonoBehaviour
 
     public void BuyItem()
     {
-        ///TO DO Check moneys count of player and withdraw money from the balance
+        ///TO DO decoment code and make a singleton
+        if(_price.text != "Sold")
+        {
+       // if(price < MoneyScript.getMoneyValue())
+        {
+       // info.SubstractMoney(price);
+       // info.UpdateInfo();
+       // info.addRespect(bonus);
         _buyButton.GetComponent<Button>().enabled = false;
         _price.text = "Sold";
+        
+        }
+        
+        }
     }
 }

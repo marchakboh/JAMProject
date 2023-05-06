@@ -25,9 +25,8 @@ public class MoneyScript : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _respect;
 
-    
-    static public int Money = 100;
-    static public int Respect = 0;
+    static public int Money;
+    static public int Respect;
     public void AddMoney(int plusMoney)
     {
         Money = Money+plusMoney;
@@ -40,8 +39,13 @@ public class MoneyScript : MonoBehaviour
     {
         Respect = Respect + respect;
     } 
+    public int getMoneyValue(){
+        return Money;
+    }
     void Start()
     {
+        Money = 100;
+        Respect = 0;
         _money.text = Money.ToString();
         _respect.text = Respect.ToString();
     }
