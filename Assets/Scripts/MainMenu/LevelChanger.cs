@@ -12,27 +12,27 @@ public class LevelChanger : MonoBehaviour
     {
         if (Input.GetKeyDown("w"))
         {
-            AnimationFade();
+            FadeToNextLevel();
         }
     }
 
-    /*public void FadeToNextLevel()
+    public void FadeToNextLevel()
     {
-        FadeToLevel(SceneManager.GetActiveScene().buildIndex + 1);
-    }*/
+        FadeToLevel();
+    }
     public void AnimationFade()
     {
         animator.SetTrigger("FadeOut");
     }
 
-    /*
-    public void FadeToLevel(int levelIndex)
+    
+    public void FadeToLevel()
     {
-        animator.SetTrigger("FadeOut");
+        AnimationFade();
     }
 
     public void OnFadeComplete()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }*/
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
