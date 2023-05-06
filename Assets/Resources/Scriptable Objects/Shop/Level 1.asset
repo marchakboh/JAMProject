@@ -15,3 +15,4 @@ MonoBehaviour:
   _image: {fileID: 0}
   _name: Level 1
   _price: 150
+  _bonus: 10

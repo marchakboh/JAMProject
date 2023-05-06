@@ -16,4 +16,8 @@ public class ShopObject : ScriptableObject
     [SerializeField]
     private int _price;
     public int Price => _price;
+
+    [SerializeField]
+    private int _bonus;
+    public int Bonus => _bonus;
 }
