@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
     private CharacterController controller;
     private PlayerInput playerInput;
     private Animator animator;
-    private ControlsInput input;
+    public ControlsInput input;
     private CameraLook cameraControl;
 
     private float terminalVelocity = 53.0f;
@@ -51,6 +51,7 @@ public class Character : MonoBehaviour
         input.Controls.Jump.canceled  += ctx => IsJumpPress = false;
 
         cameraControl = CinemachineCamera.GetComponent<CameraLook>();
+        input.Controls.Interact.Enable();
     }
 
     private void OnEnable()

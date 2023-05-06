@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -4909,6 +4909,7 @@ GameObject:
   - component: {fileID: 4456283671206688521}
   - component: {fileID: 4456283671206688532}
   - component: {fileID: 4456283671206688533}
+  - component: {fileID: 4092208727595621857}
   m_Layer: 0
   m_Name: Beatall
   m_TagString: Untagged
@@ -5013,11 +5014,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3537172554641361473}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.12883969, y: 0.037804596, z: 0.04611004}
-  m_Center: {x: 0.0030745768, y: 0.003196764, z: 0.00013273815}
+  m_Size: {x: 0.13304733, y: 0.037804596, z: 0.06975036}
+  m_Center: {x: 0.0051783947, y: 0.003196763, z: 0.00070414774}
 --- !u!114 &4456283671206688533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5032,6 +5033,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alpacaPlayer: {fileID: 0}
   successParticles: {fileID: 2133033764}
+--- !u!65 &4092208727595621857
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3537172554641361473}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.11871762, y: 0.037804592, z: 0.045380343}
+  m_Center: {x: -0.0019866417, y: 0.0031967636, z: -0.00018634278}
 --- !u!1 &4816155314545532955
 GameObject:
   m_ObjectHideFlags: 0

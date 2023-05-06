@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 611018383919590756}
   - component: {fileID: 611018383919590757}
   - component: {fileID: 611018383919590758}
-  - component: {fileID: 3509214697703838939}
   m_Layer: 0
   m_Name: AlpacaPlayer
   m_TagString: Player
@@ -138,6 +137,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 3bded9bc-bb5d-4a2e-897b-cf180d71422a
     m_ActionName: Controls/Interact[/XInputControllerWindows/buttonWest,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 45393e88-7dbc-4fc1-b02e-e2fc000c30ca
+    m_ActionName: ShopAction/MoveActionRight[/DualSenseGamepadHID/dpad/right,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5cf8ad8d-890a-463e-b790-b935af0f759b
+    m_ActionName: ShopAction/MoveActionLeft[/DualSenseGamepadHID/dpad/left,/Keyboard/a]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controls
@@ -164,19 +171,6 @@ MonoBehaviour:
   RotationSmoothing: 2
   CinemachineCamera: {fileID: 0}
   MainCamera: {fileID: 0}
---- !u!65 &3509214697703838939
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611018383919590759}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.38312584, y: 1.9017245, z: 1.6720285}
-  m_Center: {x: -0.30843696, y: 0.45086223, z: 0.33601427}
 --- !u!1 &611018384062458868
 GameObject:
   m_ObjectHideFlags: 0
