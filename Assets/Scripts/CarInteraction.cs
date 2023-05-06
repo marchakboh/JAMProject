@@ -9,6 +9,7 @@ public class CarInteraction : MonoBehaviour
     [SerializeField] ParticleSystem successParticles;
     private InputAction interact;
     public ControlsInput playerControls;
+    bool onceEntered = false;
 
     bool canInteract = false;
     // Start is called before the first frame update
@@ -27,6 +28,7 @@ public class CarInteraction : MonoBehaviour
             Debug.Log("Lama is here");
             successParticles.Play();
             canInteract = false;
+            onceEntered = true;
         }
     }
 
@@ -38,7 +40,7 @@ public class CarInteraction : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !onceEntered)
         {
             canInteract = true;
             interact.performed += ctx => {TryInteract();};
