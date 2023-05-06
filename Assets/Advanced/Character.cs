@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
     [SerializeField] private float GravityValue = -9.81f;
     [SerializeField] private bool IsGamepad = false;
     [SerializeField] private float MovementSmooting = 10f;
-    [SerializeField] private float RotationSmoothing = 2f;
+    [SerializeField] private float RotationSmoothing = 0.4f;
     [SerializeField] private GameObject CinemachineCamera;
     [SerializeField] private GameObject MainCamera;
 
@@ -97,16 +97,16 @@ public class Character : MonoBehaviour
         {
             acceleration = Mathf.Lerp(acceleration, IsRunPress ? 1f : 0.5f, Time.deltaTime * MovementSmooting);
             blendSpeed = Mathf.Lerp(blendSpeed, acceleration, Time.deltaTime * MovementSmooting);
+
+            Vector3 targetDiretion = Quaternion.Euler(.0f, targetRotation, .0f) * Vector3.forward;
+            targetDiretion.y = 0f;
+            controller.Move(targetDiretion.normalized * (blendSpeed * (IsRunPress ? RunSpeed : WalkSpeed) * Time.deltaTime) + velocity * Time.deltaTime);
         }
         else if (movement == Vector2.zero && blendSpeed > 0.0f)
         {
             blendSpeed = Mathf.Lerp(blendSpeed, 0.0f, Time.deltaTime);
             if (blendSpeed < 0.01f) blendSpeed = 0.0f;
         }
-
-        Vector3 targetDiretion = Quaternion.Euler(.0f, targetRotation, .0f) * Vector3.forward;
-        targetDiretion.y = 0f;
-        controller.Move(targetDiretion.normalized * (blendSpeed * (IsRunPress ? RunSpeed : WalkSpeed) * Time.deltaTime) + velocity * Time.deltaTime);
 
         animator.SetFloat("BlendSpeed", blendSpeed);
     }
