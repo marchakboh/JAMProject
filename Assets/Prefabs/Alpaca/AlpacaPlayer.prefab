@@ -145,6 +145,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5cf8ad8d-890a-463e-b790-b935af0f759b
     m_ActionName: ShopAction/MoveActionLeft[/DualSenseGamepadHID/dpad/left,/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2cd31bca-124f-4eb3-9406-84cf5dcf1bb7
+    m_ActionName: ShopAction/BuyButtonPressed[/Keyboard/l,/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b179e81c-4042-4edf-8f51-c5079a995125
+    m_ActionName: Sequence/A[/XInputControllerWindows/buttonSouth,/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1ca9ed98-76b8-4508-aa1a-c700c6802703
+    m_ActionName: Sequence/Y[/XInputControllerWindows/buttonNorth,/Keyboard/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e513302e-c919-4aa3-a0ac-fc6df9443610
+    m_ActionName: Sequence/B[/XInputControllerWindows/buttonEast,/Keyboard/b]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d542e1a9-c001-48f2-8989-22a64b3e1e62
+    m_ActionName: Sequence/X[/XInputControllerWindows/buttonWest,/Keyboard/x]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controls
@@ -168,9 +188,10 @@ MonoBehaviour:
   GravityValue: -9.81
   IsGamepad: 0
   MovementSmooting: 10
-  RotationSmoothing: 2
+  RotationSmoothing: 0.8
   CinemachineCamera: {fileID: 0}
   MainCamera: {fileID: 0}
+  SequenceCanvasObject: {fileID: 0}
 --- !u!1 &611018384062458868
 GameObject:
   m_ObjectHideFlags: 0

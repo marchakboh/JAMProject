@@ -7,6 +7,7 @@ using System;
 public class SequenceItem : MonoBehaviour
 {
     [SerializeField] private string action_key;
+    [SerializeField] private float CircleDelta = 0.001f;
 
     private Transform red_circle;
     private Transform green_circle;
@@ -51,8 +52,7 @@ public class SequenceItem : MonoBehaviour
     {
         if (isActive)
         {
-            float delta = 0.001f;
-            red_transform.localScale = new Vector3(red_transform.localScale.x - delta, red_transform.localScale.y - delta, red_transform.localScale.z - delta);
+            red_transform.localScale = new Vector3(red_transform.localScale.x - CircleDelta, red_transform.localScale.y - CircleDelta, red_transform.localScale.z - CircleDelta);
 
             if (red_transform.localScale.x < min_size)
             {
