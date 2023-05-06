@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 611018383919590758}
   m_Layer: 0
   m_Name: AlpacaPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,6 +133,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 6a75b8cd-0ede-44e4-89ef-c91097734624
     m_ActionName: Controls/Pause[/Keyboard/escape,/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3bded9bc-bb5d-4a2e-897b-cf180d71422a
+    m_ActionName: Controls/Interact[/XInputControllerWindows/buttonWest,/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controls
