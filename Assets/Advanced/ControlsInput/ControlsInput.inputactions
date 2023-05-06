@@ -238,6 +238,76 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ShopAction",
+            "id": "31753471-826b-4219-a362-d28ff71119cb",
+            "actions": [
+                {
+                    "name": "MoveActionRight",
+                    "type": "Button",
+                    "id": "45393e88-7dbc-4fc1-b02e-e2fc000c30ca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveActionLeft",
+                    "type": "Button",
+                    "id": "5cf8ad8d-890a-463e-b790-b935af0f759b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4e8aa8ad-cab6-4c42-9801-abacafd1581c",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MoveActionRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e005c49d-33db-436c-bca1-4f9733322ed2",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Traditional",
+                    "action": "MoveActionRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "923d2b36-c281-469d-94c4-0b94cbd5b745",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MoveActionLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cbbac6d4-788c-4fb7-9e2c-aa9e72b2ea45",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Traditional",
+                    "action": "MoveActionLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
