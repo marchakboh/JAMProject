@@ -47,7 +47,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUi.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-        //go.GetComponent<Player>().enabled = true;
+        go.GetComponent<Player>().enabled = true;
     }
 
     public void Pause()
@@ -55,7 +55,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUi.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-        //go.GetComponent<Player>().enabled = false;
+        go.GetComponent<Player>().enabled = false;
         playerControls.Enable();
     }
 
