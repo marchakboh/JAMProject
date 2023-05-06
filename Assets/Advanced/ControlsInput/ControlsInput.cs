@@ -80,6 +80,15 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenClosedStore"",
+                    ""type"": ""Button"",
+                    ""id"": ""b455352a-933b-41b6-b2ca-ba674f63d9e8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -256,6 +265,28 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Traditional"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f67bae0-df9d-49d8-a758-18fc0c2f327f"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Traditional"",
+                    ""action"": ""OpenClosedStore"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae76020b-2854-405e-8683-e0a38abefc5d"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""OpenClosedStore"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -533,6 +564,7 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
         m_Controls_Sprint = m_Controls.FindAction("Sprint", throwIfNotFound: true);
         m_Controls_Pause = m_Controls.FindAction("Pause", throwIfNotFound: true);
         m_Controls_Interact = m_Controls.FindAction("Interact", throwIfNotFound: true);
+        m_Controls_OpenClosedStore = m_Controls.FindAction("OpenClosedStore", throwIfNotFound: true);
         // ShopAction
         m_ShopAction = asset.FindActionMap("ShopAction", throwIfNotFound: true);
         m_ShopAction_MoveActionRight = m_ShopAction.FindAction("MoveActionRight", throwIfNotFound: true);
@@ -611,6 +643,7 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Controls_Sprint;
     private readonly InputAction m_Controls_Pause;
     private readonly InputAction m_Controls_Interact;
+    private readonly InputAction m_Controls_OpenClosedStore;
     public struct ControlsActions
     {
         private @ControlsInput m_Wrapper;
@@ -621,6 +654,7 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_Controls_Sprint;
         public InputAction @Pause => m_Wrapper.m_Controls_Pause;
         public InputAction @Interact => m_Wrapper.m_Controls_Interact;
+        public InputAction @OpenClosedStore => m_Wrapper.m_Controls_OpenClosedStore;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -648,6 +682,9 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @OpenClosedStore.started += instance.OnOpenClosedStore;
+            @OpenClosedStore.performed += instance.OnOpenClosedStore;
+            @OpenClosedStore.canceled += instance.OnOpenClosedStore;
         }
 
         private void UnregisterCallbacks(IControlsActions instance)
@@ -670,6 +707,9 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @OpenClosedStore.started -= instance.OnOpenClosedStore;
+            @OpenClosedStore.performed -= instance.OnOpenClosedStore;
+            @OpenClosedStore.canceled -= instance.OnOpenClosedStore;
         }
 
         public void RemoveCallbacks(IControlsActions instance)
@@ -845,6 +885,7 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnOpenClosedStore(InputAction.CallbackContext context);
     }
     public interface IShopActionActions
     {
