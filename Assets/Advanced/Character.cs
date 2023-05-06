@@ -27,12 +27,15 @@ public class Character : MonoBehaviour
     protected Vector2 movement;
     protected Vector2 looking;
     protected Vector3 velocity;
+    private float rotationMoveDelta = 1.0f;
     protected bool IsRunPress = false;
     protected bool IsJumpPress = false;
     protected float blendSpeed = 0.0f;
     protected float acceleration = 0.0f;
     protected float targetRotation = 0.0f;
     protected float rotationVelocity;
+
+    private CarInteraction currentCar = null;
 
     private void Awake()
     {
@@ -50,8 +53,9 @@ public class Character : MonoBehaviour
         input.Controls.Jump.performed += ctx => IsJumpPress = true;
         input.Controls.Jump.canceled  += ctx => IsJumpPress = false;
 
+        input.Controls.Interact.performed += TryInteractWithCar;
+
         cameraControl = CinemachineCamera.GetComponent<CameraLook>();
-        input.Controls.Interact.Enable();
     }
 
     private void OnEnable()
@@ -88,6 +92,8 @@ public class Character : MonoBehaviour
             targetRotation = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg + MainCamera.transform.eulerAngles.y;
             float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothing);
 
+            rotationMoveDelta = 1.0f - Mathf.Abs(rotationVelocity / 200f);
+
             transform.rotation = Quaternion.Euler(.0f, rotation, .0f);
         }
     }
@@ -101,7 +107,7 @@ public class Character : MonoBehaviour
 
             Vector3 targetDiretion = Quaternion.Euler(.0f, targetRotation, .0f) * Vector3.forward;
             targetDiretion.y = 0f;
-            controller.Move(targetDiretion.normalized * (blendSpeed * (IsRunPress ? RunSpeed : WalkSpeed) * Time.deltaTime) + velocity * Time.deltaTime);
+            controller.Move(targetDiretion.normalized * (blendSpeed * (IsRunPress ? RunSpeed : WalkSpeed) * rotationMoveDelta * Time.deltaTime) + velocity * Time.deltaTime);
         }
         else if (movement == Vector2.zero && blendSpeed > 0.0f)
         {
@@ -151,6 +157,23 @@ public class Character : MonoBehaviour
         {
             animator.SetBool("Grounded", false);
         }
+    }
+
+    public void SetCurrentInteractable(CarInteraction carObject)
+    {
+        currentCar = carObject;
+    }
+
+    public void RemoveCurrentInteractable()
+    {
+        currentCar = null;
+    }
+
+    private void TryInteractWithCar(InputAction.CallbackContext ctx)
+    {
+        if (!currentCar) return;
+        
+        currentCar.TryHit();
     }
 
     public void OnInputSourceChanged(PlayerInput playerInput)
