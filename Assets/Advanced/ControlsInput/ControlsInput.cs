@@ -260,6 +260,76 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""ShopAction"",
+            ""id"": ""31753471-826b-4219-a362-d28ff71119cb"",
+            ""actions"": [
+                {
+                    ""name"": ""MoveActionRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""45393e88-7dbc-4fc1-b02e-e2fc000c30ca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveActionLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""5cf8ad8d-890a-463e-b790-b935af0f759b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4e8aa8ad-cab6-4c42-9801-abacafd1581c"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MoveActionRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e005c49d-33db-436c-bca1-4f9733322ed2"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Traditional"",
+                    ""action"": ""MoveActionRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""923d2b36-c281-469d-94c4-0b94cbd5b745"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MoveActionLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cbbac6d4-788c-4fb7-9e2c-aa9e72b2ea45"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Traditional"",
+                    ""action"": ""MoveActionLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -300,6 +370,10 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
         m_Controls_Sprint = m_Controls.FindAction("Sprint", throwIfNotFound: true);
         m_Controls_Pause = m_Controls.FindAction("Pause", throwIfNotFound: true);
         m_Controls_Interact = m_Controls.FindAction("Interact", throwIfNotFound: true);
+        // ShopAction
+        m_ShopAction = asset.FindActionMap("ShopAction", throwIfNotFound: true);
+        m_ShopAction_MoveActionRight = m_ShopAction.FindAction("MoveActionRight", throwIfNotFound: true);
+        m_ShopAction_MoveActionLeft = m_ShopAction.FindAction("MoveActionLeft", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -443,6 +517,60 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
         }
     }
     public ControlsActions @Controls => new ControlsActions(this);
+
+    // ShopAction
+    private readonly InputActionMap m_ShopAction;
+    private List<IShopActionActions> m_ShopActionActionsCallbackInterfaces = new List<IShopActionActions>();
+    private readonly InputAction m_ShopAction_MoveActionRight;
+    private readonly InputAction m_ShopAction_MoveActionLeft;
+    public struct ShopActionActions
+    {
+        private @ControlsInput m_Wrapper;
+        public ShopActionActions(@ControlsInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MoveActionRight => m_Wrapper.m_ShopAction_MoveActionRight;
+        public InputAction @MoveActionLeft => m_Wrapper.m_ShopAction_MoveActionLeft;
+        public InputActionMap Get() { return m_Wrapper.m_ShopAction; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ShopActionActions set) { return set.Get(); }
+        public void AddCallbacks(IShopActionActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ShopActionActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ShopActionActionsCallbackInterfaces.Add(instance);
+            @MoveActionRight.started += instance.OnMoveActionRight;
+            @MoveActionRight.performed += instance.OnMoveActionRight;
+            @MoveActionRight.canceled += instance.OnMoveActionRight;
+            @MoveActionLeft.started += instance.OnMoveActionLeft;
+            @MoveActionLeft.performed += instance.OnMoveActionLeft;
+            @MoveActionLeft.canceled += instance.OnMoveActionLeft;
+        }
+
+        private void UnregisterCallbacks(IShopActionActions instance)
+        {
+            @MoveActionRight.started -= instance.OnMoveActionRight;
+            @MoveActionRight.performed -= instance.OnMoveActionRight;
+            @MoveActionRight.canceled -= instance.OnMoveActionRight;
+            @MoveActionLeft.started -= instance.OnMoveActionLeft;
+            @MoveActionLeft.performed -= instance.OnMoveActionLeft;
+            @MoveActionLeft.canceled -= instance.OnMoveActionLeft;
+        }
+
+        public void RemoveCallbacks(IShopActionActions instance)
+        {
+            if (m_Wrapper.m_ShopActionActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IShopActionActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ShopActionActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ShopActionActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ShopActionActions @ShopAction => new ShopActionActions(this);
     private int m_TraditionalSchemeIndex = -1;
     public InputControlScheme TraditionalScheme
     {
@@ -469,5 +597,10 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IShopActionActions
+    {
+        void OnMoveActionRight(InputAction.CallbackContext context);
+        void OnMoveActionLeft(InputAction.CallbackContext context);
     }
 }
