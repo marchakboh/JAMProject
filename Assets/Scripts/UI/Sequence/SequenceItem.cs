@@ -62,6 +62,12 @@ public class SequenceItem : MonoBehaviour
         }
     }
 
+    public void ResetPosition(int x, int y)
+    {
+        RectTransform tr = transform.GetComponent<RectTransform>();
+        tr.anchoredPosition = new Vector2((float)x, (float)y);
+    }
+
     private void Deactivate()
     {
         isActive = false;
