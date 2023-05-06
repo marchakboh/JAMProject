@@ -7,7 +7,10 @@ public class CarInteraction : MonoBehaviour
 {
     [SerializeField] ParticleSystem rings;
     [SerializeField] ParticleSystem coins;
+    [SerializeField] int SequenceHitCount;
+    
     private bool canInteract = true;
+    private int hit_count = 0;
 
     void Awake()
     {
@@ -15,10 +18,23 @@ public class CarInteraction : MonoBehaviour
         coins.Stop();
     }
 
-    public void TryHit()
+    public bool TryHit()
     {
         rings.Play();
         coins.Play();
+
+        hit_count++;
+        if (hit_count == SequenceHitCount)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void Restore()
+    {
+        hit_count = 0;
     }
 
     public void TryDestroy()
@@ -31,7 +47,7 @@ public class CarInteraction : MonoBehaviour
         if (other.gameObject.tag == "Player" && canInteract)
         {
             AlpacaCharacter character = other.gameObject.GetComponent<AlpacaCharacter>();
-            character.SetCurrentInteractable(this);
+            character.SetCurrentInteractable(transform.gameObject);
         }
     }
 

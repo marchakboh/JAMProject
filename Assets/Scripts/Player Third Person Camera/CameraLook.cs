@@ -22,4 +22,9 @@ public class CameraLook : MonoBehaviour
             cinemachine.m_YAxis.Value += delta.y * LookSpeed_Y * Time.deltaTime;
         }
     }
+
+    public void ChangeLookAt(Transform objec_transform)
+    {
+        cinemachine.LookAt = objec_transform;
+    }
 }

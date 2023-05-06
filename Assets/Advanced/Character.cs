@@ -15,6 +15,7 @@ public class Character : MonoBehaviour
     [SerializeField] private float RotationSmoothing = 0.4f;
     [SerializeField] private GameObject CinemachineCamera;
     [SerializeField] private GameObject MainCamera;
+    [SerializeField] private GameObject SequenceCanvasObject;
 
     private CharacterController controller;
     private PlayerInput playerInput;
@@ -35,7 +36,7 @@ public class Character : MonoBehaviour
     protected float targetRotation = 0.0f;
     protected float rotationVelocity;
 
-    private CarInteraction currentCar = null;
+    private GameObject currentCar = null;
 
     private void Awake()
     {
@@ -53,9 +54,17 @@ public class Character : MonoBehaviour
         input.Controls.Jump.performed += ctx => IsJumpPress = true;
         input.Controls.Jump.canceled  += ctx => IsJumpPress = false;
 
+        input.Sequence.A.performed += OnA;
+        input.Sequence.B.performed += OnB;
+        input.Sequence.Y.performed += OnY;
+        input.Sequence.X.performed += OnX;
+
         input.Controls.Interact.performed += TryInteractWithCar;
 
         cameraControl = CinemachineCamera.GetComponent<CameraLook>();
+
+        SequenceCanvasObject.SetActive(false);
+        input.Sequence.Disable();
     }
 
     private void OnEnable()
@@ -159,7 +168,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void SetCurrentInteractable(CarInteraction carObject)
+    public void SetCurrentInteractable(GameObject carObject)
     {
         currentCar = carObject;
     }
@@ -167,13 +176,142 @@ public class Character : MonoBehaviour
     public void RemoveCurrentInteractable()
     {
         currentCar = null;
+        cameraControl.ChangeLookAt(transform.Find("CameraPoint"));
+    }
+
+    private void OnA(InputAction.CallbackContext ctx)
+    {
+        if (!currentCar) return;
+        
+        SequenceCanvas sequenceCanvas = SequenceCanvasObject.GetComponent<SequenceCanvas>();
+        if (sequenceCanvas)
+        {
+            CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
+            if (sequenceCanvas.ActionPerform("A"))
+            {
+                if (car_script.TryHit())
+                {
+                    FinishSequence();
+                }
+                else
+                {
+                    sequenceCanvas.NextSequenceIteration();
+                }
+            }
+            else
+            {
+                car_script.Restore();
+            }
+        }
+    }
+
+    private void OnB(InputAction.CallbackContext ctx)
+    {
+        if (!currentCar) return;
+        
+        SequenceCanvas sequenceCanvas = SequenceCanvasObject.GetComponent<SequenceCanvas>();
+        if (sequenceCanvas)
+        {
+            CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
+            if (sequenceCanvas.ActionPerform("B"))
+            {
+                if (car_script.TryHit())
+                {
+                    FinishSequence();
+                }
+                else
+                {
+                    sequenceCanvas.NextSequenceIteration();
+                }
+            }
+            else
+            {
+                car_script.Restore();
+            }
+        }
+    }
+
+    private void OnX(InputAction.CallbackContext ctx)
+    {
+        if (!currentCar) return;
+        
+        SequenceCanvas sequenceCanvas = SequenceCanvasObject.GetComponent<SequenceCanvas>();
+        if (sequenceCanvas)
+        {
+            CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
+            if (sequenceCanvas.ActionPerform("X"))
+            {
+                if (car_script.TryHit())
+                {
+                    FinishSequence();
+                }
+                else
+                {
+                    sequenceCanvas.NextSequenceIteration();
+                }
+            }
+            else
+            {
+                car_script.Restore();
+            }
+        }
+    }
+
+    private void OnY(InputAction.CallbackContext ctx)
+    {
+        if (!currentCar) return;
+        
+        SequenceCanvas sequenceCanvas = SequenceCanvasObject.GetComponent<SequenceCanvas>();
+        if (sequenceCanvas)
+        {
+            CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
+            if (sequenceCanvas.ActionPerform("Y"))
+            {
+                if (car_script.TryHit())
+                {
+                    FinishSequence();
+                }
+                else
+                {
+                    sequenceCanvas.NextSequenceIteration();
+                }
+            }
+            else
+            {
+                car_script.Restore();
+            }
+        }
     }
 
     private void TryInteractWithCar(InputAction.CallbackContext ctx)
     {
         if (!currentCar) return;
         
-        currentCar.TryHit();
+        cameraControl.ChangeLookAt(currentCar.transform);
+        
+        SequenceCanvasObject.SetActive(true);
+        SequenceCanvas sequenceCanvas = SequenceCanvasObject.GetComponent<SequenceCanvas>();
+        sequenceCanvas.Init(this);
+        sequenceCanvas.NextSequenceIteration();
+
+        input.Controls.Disable();
+        input.Sequence.Enable();
+    }
+
+    public void FailSequence()
+    {
+        cameraControl.ChangeLookAt(transform.Find("CameraPoint"));
+        input.Controls.Enable();
+        input.Sequence.Disable();
+        Debug.Log("Fail");
+    }
+
+    public void FinishSequence()
+    {
+        RemoveCurrentInteractable();
+        input.Controls.Enable();
+        input.Sequence.Disable();
+        Debug.Log("Success");
     }
 
     public void OnInputSourceChanged(PlayerInput playerInput)
