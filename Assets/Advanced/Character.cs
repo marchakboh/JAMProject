@@ -45,11 +45,14 @@ public class Character : MonoBehaviour
     private GameObject currentCar = null;
     private float KickResetTimer = 0f;
 
+    private AudioSource sequence_sound;
+
     private void Awake()
     {
         controller  = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         animator    = GetComponent<Animator>();
+        sequence_sound = GetComponent<AudioSource>();
         input       = new ControlsInput();
     }
 
@@ -213,7 +216,7 @@ public class Character : MonoBehaviour
             CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
             if (sequenceCanvas.ActionPerform("A"))
             {
-                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), 0.8f);
+                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), OnKickSoundVolume);
                 animator.SetBool("Kick", true);
                 if (car_script.TryHit())
                 {
@@ -241,7 +244,7 @@ public class Character : MonoBehaviour
             CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
             if (sequenceCanvas.ActionPerform("B"))
             {
-                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), 0.8f);
+                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), OnKickSoundVolume);
                 animator.SetBool("Kick", true);
                 if (car_script.TryHit())
                 {
@@ -269,7 +272,7 @@ public class Character : MonoBehaviour
             CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
             if (sequenceCanvas.ActionPerform("X"))
             {
-                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), 0.8f);
+                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), OnKickSoundVolume);
                 animator.SetBool("Kick", true);
                 if (car_script.TryHit())
                 {
@@ -297,7 +300,7 @@ public class Character : MonoBehaviour
             CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
             if (sequenceCanvas.ActionPerform("Y"))
             {
-                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), 0.8f);
+                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), OnKickSoundVolume);
                 animator.SetBool("Kick", true);
                 if (car_script.TryHit())
                 {
@@ -341,6 +344,8 @@ public class Character : MonoBehaviour
         input.Controls.Disable();
         input.Sequence.Enable();
         IsSequenceNow = true;
+
+        sequence_sound.Play();
     }
 
     private void TryOpenPauseMenu(InputAction.CallbackContext ctx)
@@ -391,6 +396,7 @@ public class Character : MonoBehaviour
         input.Sequence.Disable();
         IsSequenceNow = false;
         animator.SetBool("Kick", false);
+        sequence_sound.Stop();
         Debug.Log("Fail");
     }
 
@@ -401,6 +407,7 @@ public class Character : MonoBehaviour
         input.Sequence.Disable();
         IsSequenceNow = false;
         animator.SetBool("Kick", false);
+        sequence_sound.Stop();
         Debug.Log("Success");
     }
 
