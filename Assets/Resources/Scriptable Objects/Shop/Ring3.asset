@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c177a62a77ce2f4bbe7f95f06395d2d, type: 3}
-  m_Name: Level 1
+  m_Name: Ring3
   m_EditorClassIdentifier: 
-  _image: {fileID: 0}
-  _name: Level 1
-  _price: 150
-  _bonus: 10
+  _image: {fileID: 21300000, guid: 65c1e5dda3709d74eb044bf2e1699b4a, type: 3}
+  _name: Ring 1
+  _price: 100
+  _bonus: 100

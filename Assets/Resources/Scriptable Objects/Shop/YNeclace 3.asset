@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c177a62a77ce2f4bbe7f95f06395d2d, type: 3}
-  m_Name: Level 2
+  m_Name: YNeclace 3
   m_EditorClassIdentifier: 
-  _image: {fileID: 0}
-  _name: Level 2
+  _image: {fileID: 21300000, guid: 7cef6304ad563e34a9484a90d849efb8, type: 3}
+  _name: Neclace 3
   _price: 200
-  _bonus: 1
+  _bonus: 200

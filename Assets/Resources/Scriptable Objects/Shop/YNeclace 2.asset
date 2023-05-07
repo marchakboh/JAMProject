@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c177a62a77ce2f4bbe7f95f06395d2d, type: 3}
-  m_Name: Common
+  m_Name: YNeclace 2
   m_EditorClassIdentifier: 
-  _image: {fileID: 21300000, guid: b1f7ebd4cc4c1fa4cb6bb9bd7428c4d8, type: 3}
-  _name: Don`t touch my p.i.m.p.y
-  _price: 100
-  _bonus: 10
+  _image: {fileID: 21300000, guid: 6140805cb14f13540b3e52e5cf9b5050, type: 3}
+  _name: Neclace 2
+  _price: 200
+  _bonus: 200
