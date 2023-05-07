@@ -12,6 +12,8 @@ public class CarInteraction : MonoBehaviour
     [SerializeField] int XP_Count;
     [SerializeField] int LvlLock;
 
+    [SerializeField] private bool isLastCar;
+
     private GameObject textObject;
     private bool canInteract = true;
     private int hit_count = 0;
