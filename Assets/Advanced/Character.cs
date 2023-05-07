@@ -339,7 +339,6 @@ public class Character : MonoBehaviour
     {
         if (!currentCar) return;
         
-        //cameraControl.LockFocus();
         if (currentCar.GetComponent<CarInteraction>().GetLVLLock() > mylvl) return;
 
         Vector2 onKickReversePosition = new Vector2(transform.position.x - currentCar.transform.position.x, transform.position.y - currentCar.transform.position.y);
