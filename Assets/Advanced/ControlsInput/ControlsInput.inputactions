@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "OpenClosedStore",
+                    "name": "Shop",
                     "type": "Button",
                     "id": "b455352a-933b-41b6-b2ca-ba674f63d9e8",
                     "expectedControlType": "Button",
@@ -253,7 +253,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Traditional",
-                    "action": "OpenClosedStore",
+                    "action": "Shop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -264,7 +264,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "OpenClosedStore",
+                    "action": "Shop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -296,6 +296,15 @@
                     "name": "BuyButtonPressed",
                     "type": "Button",
                     "id": "2cd31bca-124f-4eb3-9406-84cf5dcf1bb7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Close",
+                    "type": "Button",
+                    "id": "1def899b-1f42-42f9-9f0e-069d939f73c5",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -366,6 +375,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "BuyButtonPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "764ccde1-bc51-4f21-98f9-d5ac53ae4f61",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Close",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7b13b181-41d0-4dd9-bcaf-4481ed7e9ec0",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Traditional",
+                    "action": "Close",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

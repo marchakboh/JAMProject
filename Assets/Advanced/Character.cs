@@ -17,6 +17,10 @@ public class Character : MonoBehaviour
     [SerializeField] private GameObject MainCamera;
     [SerializeField] private GameObject SequenceCanvasObject;
     [SerializeField] private GameObject PauseMenuObject;
+    [SerializeField] private GameObject ShopMenuObject;
+    [SerializeField] private AudioClip OnKickSound;
+    [Range(0, 1)]
+    [SerializeField] private float OnKickSoundVolume;
 
     private CharacterController controller;
     private PlayerInput playerInput;
@@ -39,12 +43,16 @@ public class Character : MonoBehaviour
     private bool IsSequenceNow = false;
 
     private GameObject currentCar = null;
+    private float KickResetTimer = 0f;
+
+    private AudioSource sequence_sound;
 
     private void Awake()
     {
         controller  = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         animator    = GetComponent<Animator>();
+        sequence_sound = GetComponent<AudioSource>();
         input       = new ControlsInput();
     }
 
@@ -63,11 +71,13 @@ public class Character : MonoBehaviour
 
         input.Controls.Pause.performed += TryOpenPauseMenu;
         input.Controls.Interact.performed += TryInteractWithCar;
+        input.Controls.Shop.performed += TryOpenShopMenu;
 
         cameraControl = CinemachineCamera.GetComponent<CameraLook>();
 
         input.Sequence.Disable();
         input.Pause.Disable();
+        input.ShopAction.Disable();
     }
 
     private void OnEnable()
@@ -87,6 +97,7 @@ public class Character : MonoBehaviour
         HandleMovement();
         HandleJump();
         HandleGravity();
+        HandleAdditional();
     }
 
     protected virtual void HandleInput()
@@ -137,6 +148,19 @@ public class Character : MonoBehaviour
             velocity.y += GravityValue * Time.deltaTime;
             
             //controller.Move(velocity * Time.deltaTime);
+        }
+    }
+
+    protected void HandleAdditional()
+    {
+        if (IsSequenceNow)
+        {
+            KickResetTimer += Time.deltaTime;
+            if (KickResetTimer > 1.2)
+            {
+                animator.SetBool("Kick", false);
+                KickResetTimer = 0f;
+            }
         }
     }
 
@@ -192,6 +216,8 @@ public class Character : MonoBehaviour
             CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
             if (sequenceCanvas.ActionPerform("A"))
             {
+                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), OnKickSoundVolume);
+                animator.SetBool("Kick", true);
                 if (car_script.TryHit())
                 {
                     FinishSequence();
@@ -218,6 +244,8 @@ public class Character : MonoBehaviour
             CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
             if (sequenceCanvas.ActionPerform("B"))
             {
+                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), OnKickSoundVolume);
+                animator.SetBool("Kick", true);
                 if (car_script.TryHit())
                 {
                     FinishSequence();
@@ -244,6 +272,8 @@ public class Character : MonoBehaviour
             CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
             if (sequenceCanvas.ActionPerform("X"))
             {
+                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), OnKickSoundVolume);
+                animator.SetBool("Kick", true);
                 if (car_script.TryHit())
                 {
                     FinishSequence();
@@ -270,6 +300,8 @@ public class Character : MonoBehaviour
             CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
             if (sequenceCanvas.ActionPerform("Y"))
             {
+                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), OnKickSoundVolume);
+                animator.SetBool("Kick", true);
                 if (car_script.TryHit())
                 {
                     FinishSequence();
@@ -291,6 +323,18 @@ public class Character : MonoBehaviour
         if (!currentCar) return;
         
         cameraControl.ChangeLookAt(currentCar.transform);
+
+        Vector2 onKickReversePosition = new Vector2(transform.position.x - currentCar.transform.position.x, transform.position.y - currentCar.transform.position.y);
+        float need_ang = Mathf.Atan2(onKickReversePosition.x, onKickReversePosition.y);
+        if (need_ang < 0f)
+        {
+            need_ang += 2 * Mathf.PI;
+        }
+        if (need_ang > Mathf.PI * 2)
+        {
+            need_ang -= Mathf.PI * 2;
+        }
+        transform.rotation = Quaternion.Euler(.0f, need_ang * 180 / Mathf.PI, .0f);
         
         SequenceCanvasObject.SetActive(true);
         SequenceCanvas sequenceCanvas = SequenceCanvasObject.GetComponent<SequenceCanvas>();
@@ -300,6 +344,8 @@ public class Character : MonoBehaviour
         input.Controls.Disable();
         input.Sequence.Enable();
         IsSequenceNow = true;
+
+        sequence_sound.Play();
     }
 
     private void TryOpenPauseMenu(InputAction.CallbackContext ctx)
@@ -318,12 +364,39 @@ public class Character : MonoBehaviour
         }
     }
 
+    private void TryOpenShopMenu(InputAction.CallbackContext ctx)
+    {
+        if (IsSequenceNow) return;
+
+        ShopMenuObject.SetActive(true);
+        ShopUiControl shop = ShopMenuObject.GetComponent<ShopUiControl>();
+        if (shop)
+        {
+            shop.SetActions(input.ShopAction);
+            shop.OpenShop();
+            input.Controls.Disable();
+            input.Pause.Disable();
+            input.Sequence.Disable();
+            input.ShopAction.Enable();
+        }
+    }
+
+    public void RestoreControls()
+    {
+        input.Controls.Enable();
+        input.Pause.Disable();
+        input.Sequence.Disable();
+        input.ShopAction.Disable();
+    }
+
     public void FailSequence()
     {
         cameraControl.ChangeLookAt(transform.Find("CameraPoint"));
         input.Controls.Enable();
         input.Sequence.Disable();
         IsSequenceNow = false;
+        animator.SetBool("Kick", false);
+        sequence_sound.Stop();
         Debug.Log("Fail");
     }
 
@@ -333,6 +406,8 @@ public class Character : MonoBehaviour
         input.Controls.Enable();
         input.Sequence.Disable();
         IsSequenceNow = false;
+        animator.SetBool("Kick", false);
+        sequence_sound.Stop();
         Debug.Log("Success");
     }
 

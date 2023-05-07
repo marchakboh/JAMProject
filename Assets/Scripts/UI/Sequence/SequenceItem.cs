@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Timers;
 
 public class SequenceItem : MonoBehaviour
 {
@@ -13,13 +14,16 @@ public class SequenceItem : MonoBehaviour
     private Transform main_image;
 
     private int red_size = 200;
-    private float CircleDelta = 0.05f;
+    private float CircleDelta;
 
     public event Action OnFailed;
     private bool isActive = false;
     private float min_size = 0.5f;
     private float max_size = 0.7f;
     private RectTransform red_transform;
+    private bool CanScale = false;
+
+    private Timer timer;
 
     private void Start()
     {
@@ -29,13 +33,25 @@ public class SequenceItem : MonoBehaviour
 
         red_transform = red_circle.transform.GetComponent<RectTransform>();
         transform.gameObject.SetActive(false);
+
+        timer = new Timer(30);
+        timer.AutoReset = true;
+        timer.Elapsed += AnimateElements;
+    }
+
+    private void AnimateElements(object sender, ElapsedEventArgs e)
+    {
+        if (isActive)
+        {
+            CanScale = true;
+        }
     }
 
     public void ActivateSequence()
     {
         transform.gameObject.SetActive(true);
         isActive = true;
-        Debug.Log("Activate");
+        timer.Start();
     }
 
     public bool IsKey(string key)
@@ -51,10 +67,13 @@ public class SequenceItem : MonoBehaviour
 
     private void Update()
     {
-        if (isActive)
+         if (isActive)
         {
-            Debug.Log("Activate");
-            red_transform.localScale = new Vector3(red_transform.localScale.x - CircleDelta, red_transform.localScale.y - CircleDelta, red_transform.localScale.z - CircleDelta);
+            if (CanScale)
+            {
+                red_transform.localScale = new Vector3(red_transform.localScale.x - CircleDelta, red_transform.localScale.y - CircleDelta, red_transform.localScale.z - CircleDelta);
+                CanScale = false;
+            }
 
             if (red_transform.localScale.x < min_size)
             {
@@ -77,9 +96,9 @@ public class SequenceItem : MonoBehaviour
 
     private void Deactivate()
     {
-        Debug.Log("Dea");
         isActive = false;
         red_transform.localScale = Vector3.one;
         transform.gameObject.SetActive(false);
+        timer.Stop();
     }
 }
