@@ -36,9 +36,13 @@ public class LevelChanger : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    void QuitApp()
+    {
+        Application.Quit();
+    }
     public void Quit()
     {
         AnimationFade();
-        Application.Quit();
+        Invoke("QuitApp", 1f);
     }
 }
