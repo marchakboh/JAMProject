@@ -82,7 +82,7 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""OpenClosedStore"",
+                    ""name"": ""Shop"",
                     ""type"": ""Button"",
                     ""id"": ""b455352a-933b-41b6-b2ca-ba674f63d9e8"",
                     ""expectedControlType"": ""Button"",
@@ -275,7 +275,7 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Traditional"",
-                    ""action"": ""OpenClosedStore"",
+                    ""action"": ""Shop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -286,7 +286,7 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""OpenClosedStore"",
+                    ""action"": ""Shop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -318,6 +318,15 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
                     ""name"": ""BuyButtonPressed"",
                     ""type"": ""Button"",
                     ""id"": ""2cd31bca-124f-4eb3-9406-84cf5dcf1bb7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Close"",
+                    ""type"": ""Button"",
+                    ""id"": ""1def899b-1f42-42f9-9f0e-069d939f73c5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -388,6 +397,28 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""BuyButtonPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""764ccde1-bc51-4f21-98f9-d5ac53ae4f61"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Close"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7b13b181-41d0-4dd9-bcaf-4481ed7e9ec0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Traditional"",
+                    ""action"": ""Close"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -696,12 +727,13 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
         m_Controls_Sprint = m_Controls.FindAction("Sprint", throwIfNotFound: true);
         m_Controls_Pause = m_Controls.FindAction("Pause", throwIfNotFound: true);
         m_Controls_Interact = m_Controls.FindAction("Interact", throwIfNotFound: true);
-        m_Controls_OpenClosedStore = m_Controls.FindAction("OpenClosedStore", throwIfNotFound: true);
+        m_Controls_Shop = m_Controls.FindAction("Shop", throwIfNotFound: true);
         // ShopAction
         m_ShopAction = asset.FindActionMap("ShopAction", throwIfNotFound: true);
         m_ShopAction_MoveActionRight = m_ShopAction.FindAction("MoveActionRight", throwIfNotFound: true);
         m_ShopAction_MoveActionLeft = m_ShopAction.FindAction("MoveActionLeft", throwIfNotFound: true);
         m_ShopAction_BuyButtonPressed = m_ShopAction.FindAction("BuyButtonPressed", throwIfNotFound: true);
+        m_ShopAction_Close = m_ShopAction.FindAction("Close", throwIfNotFound: true);
         // Sequence
         m_Sequence = asset.FindActionMap("Sequence", throwIfNotFound: true);
         m_Sequence_A = m_Sequence.FindAction("A", throwIfNotFound: true);
@@ -781,7 +813,7 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Controls_Sprint;
     private readonly InputAction m_Controls_Pause;
     private readonly InputAction m_Controls_Interact;
-    private readonly InputAction m_Controls_OpenClosedStore;
+    private readonly InputAction m_Controls_Shop;
     public struct ControlsActions
     {
         private @ControlsInput m_Wrapper;
@@ -792,7 +824,7 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_Controls_Sprint;
         public InputAction @Pause => m_Wrapper.m_Controls_Pause;
         public InputAction @Interact => m_Wrapper.m_Controls_Interact;
-        public InputAction @OpenClosedStore => m_Wrapper.m_Controls_OpenClosedStore;
+        public InputAction @Shop => m_Wrapper.m_Controls_Shop;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -820,9 +852,9 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
-            @OpenClosedStore.started += instance.OnOpenClosedStore;
-            @OpenClosedStore.performed += instance.OnOpenClosedStore;
-            @OpenClosedStore.canceled += instance.OnOpenClosedStore;
+            @Shop.started += instance.OnShop;
+            @Shop.performed += instance.OnShop;
+            @Shop.canceled += instance.OnShop;
         }
 
         private void UnregisterCallbacks(IControlsActions instance)
@@ -845,9 +877,9 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
-            @OpenClosedStore.started -= instance.OnOpenClosedStore;
-            @OpenClosedStore.performed -= instance.OnOpenClosedStore;
-            @OpenClosedStore.canceled -= instance.OnOpenClosedStore;
+            @Shop.started -= instance.OnShop;
+            @Shop.performed -= instance.OnShop;
+            @Shop.canceled -= instance.OnShop;
         }
 
         public void RemoveCallbacks(IControlsActions instance)
@@ -872,6 +904,7 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_ShopAction_MoveActionRight;
     private readonly InputAction m_ShopAction_MoveActionLeft;
     private readonly InputAction m_ShopAction_BuyButtonPressed;
+    private readonly InputAction m_ShopAction_Close;
     public struct ShopActionActions
     {
         private @ControlsInput m_Wrapper;
@@ -879,6 +912,7 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
         public InputAction @MoveActionRight => m_Wrapper.m_ShopAction_MoveActionRight;
         public InputAction @MoveActionLeft => m_Wrapper.m_ShopAction_MoveActionLeft;
         public InputAction @BuyButtonPressed => m_Wrapper.m_ShopAction_BuyButtonPressed;
+        public InputAction @Close => m_Wrapper.m_ShopAction_Close;
         public InputActionMap Get() { return m_Wrapper.m_ShopAction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -897,6 +931,9 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
             @BuyButtonPressed.started += instance.OnBuyButtonPressed;
             @BuyButtonPressed.performed += instance.OnBuyButtonPressed;
             @BuyButtonPressed.canceled += instance.OnBuyButtonPressed;
+            @Close.started += instance.OnClose;
+            @Close.performed += instance.OnClose;
+            @Close.canceled += instance.OnClose;
         }
 
         private void UnregisterCallbacks(IShopActionActions instance)
@@ -910,6 +947,9 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
             @BuyButtonPressed.started -= instance.OnBuyButtonPressed;
             @BuyButtonPressed.performed -= instance.OnBuyButtonPressed;
             @BuyButtonPressed.canceled -= instance.OnBuyButtonPressed;
+            @Close.started -= instance.OnClose;
+            @Close.performed -= instance.OnClose;
+            @Close.canceled -= instance.OnClose;
         }
 
         public void RemoveCallbacks(IShopActionActions instance)
@@ -1093,13 +1133,14 @@ public partial class @ControlsInput: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnOpenClosedStore(InputAction.CallbackContext context);
+        void OnShop(InputAction.CallbackContext context);
     }
     public interface IShopActionActions
     {
         void OnMoveActionRight(InputAction.CallbackContext context);
         void OnMoveActionLeft(InputAction.CallbackContext context);
         void OnBuyButtonPressed(InputAction.CallbackContext context);
+        void OnClose(InputAction.CallbackContext context);
     }
     public interface ISequenceActions
     {

@@ -76,6 +76,11 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        actions.Up.performed -= TrySelectNextButtonUp;
+        actions.Down.performed -= TrySelectNextButtonDown;
+        actions.Select.performed -= TrySelectButton;
+        actions.Close.performed -= ClosePause;
+
         pauseMenuUi.SetActive(false);
         Time.timeScale = 1f;
         PlayerCharacter.GetComponent<AlpacaCharacter>().enabled = true;

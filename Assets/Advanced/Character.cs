@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
     [SerializeField] private GameObject MainCamera;
     [SerializeField] private GameObject SequenceCanvasObject;
     [SerializeField] private GameObject PauseMenuObject;
+    [SerializeField] private GameObject ShopMenuObject;
 
     private CharacterController controller;
     private PlayerInput playerInput;
@@ -63,11 +64,13 @@ public class Character : MonoBehaviour
 
         input.Controls.Pause.performed += TryOpenPauseMenu;
         input.Controls.Interact.performed += TryInteractWithCar;
+        input.Controls.Shop.performed += TryOpenShopMenu;
 
         cameraControl = CinemachineCamera.GetComponent<CameraLook>();
 
         input.Sequence.Disable();
         input.Pause.Disable();
+        input.ShopAction.Disable();
     }
 
     private void OnEnable()
@@ -316,6 +319,31 @@ public class Character : MonoBehaviour
             input.Controls.Disable();
             input.Sequence.Disable();
         }
+    }
+
+    private void TryOpenShopMenu(InputAction.CallbackContext ctx)
+    {
+        if (IsSequenceNow) return;
+
+        ShopMenuObject.SetActive(true);
+        ShopUiControl shop = ShopMenuObject.GetComponent<ShopUiControl>();
+        if (shop)
+        {
+            shop.SetActions(input.ShopAction);
+            shop.OpenShop();
+            input.Controls.Disable();
+            input.Pause.Disable();
+            input.Sequence.Disable();
+            input.ShopAction.Enable();
+        }
+    }
+
+    public void RestoreControls()
+    {
+        input.Controls.Enable();
+        input.Pause.Disable();
+        input.Sequence.Disable();
+        input.ShopAction.Disable();
     }
 
     public void FailSequence()

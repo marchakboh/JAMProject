@@ -35,7 +35,6 @@ public class SequenceItem : MonoBehaviour
     {
         transform.gameObject.SetActive(true);
         isActive = true;
-        Debug.Log("Activate");
     }
 
     public bool IsKey(string key)
@@ -53,7 +52,6 @@ public class SequenceItem : MonoBehaviour
     {
         if (isActive)
         {
-            Debug.Log("Activate");
             red_transform.localScale = new Vector3(red_transform.localScale.x - CircleDelta, red_transform.localScale.y - CircleDelta, red_transform.localScale.z - CircleDelta);
 
             if (red_transform.localScale.x < min_size)
@@ -77,7 +75,6 @@ public class SequenceItem : MonoBehaviour
 
     private void Deactivate()
     {
-        Debug.Log("Dea");
         isActive = false;
         red_transform.localScale = Vector3.one;
         transform.gameObject.SetActive(false);
