@@ -23,6 +23,7 @@ public class Character : MonoBehaviour
     [SerializeField] private AudioClip OnKickSound;
 
     [SerializeField] private AudioClip onCarMusic;
+    [SerializeField] private AudioClip OnSequenceFinished;
 
     [SerializeField] private AudioClip[] foneTracks;
 
@@ -60,6 +61,9 @@ public class Character : MonoBehaviour
     private int xp = 0;
     private int money = 0;
     private int mylvl = 1;
+
+    private bool isSequenceMusic = false;
+    private float sequence_music_delta = 0.0f;
 
     private void Awake()
     {
@@ -177,6 +181,17 @@ public class Character : MonoBehaviour
             {
                 animator.SetBool("Kick", false);
                 KickResetTimer = 0f;
+            }
+        }
+
+        if (isSequenceMusic)
+        {
+            sequence_music_delta += Time.deltaTime;
+            if (sequence_music_delta > 6.5f)
+            {
+                sequence_music_delta = 0f;
+                isSequenceMusic = false;
+                RestoreFoneMusic();
             }
         }
     }
@@ -427,7 +442,11 @@ public class Character : MonoBehaviour
         input.Sequence.Disable();
         IsSequenceNow = false;
         animator.SetBool("Kick", false);
-        RestoreFoneMusic();
+        sounds.Stop();
+        sounds.clip = OnSequenceFinished;
+        sounds.Play();
+        isSequenceMusic = true;
+        //RestoreFoneMusic();
         Debug.Log("Success");
         CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
         xp += car_script.GetXPPrize();

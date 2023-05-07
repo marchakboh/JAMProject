@@ -222,6 +222,7 @@ MonoBehaviour:
   PlayerScreenObject: {fileID: 0}
   OnKickSound: {fileID: 8300000, guid: c949cf9e724df1c4dbe60756bcd41660, type: 3}
   onCarMusic: {fileID: 8300000, guid: 0e43f5d9ed3e9ef4dbc4d5b222012168, type: 3}
+  OnSequenceFinished: {fileID: 8300000, guid: 629a4ad44f8ff3340b819bc7b844b7df, type: 3}
   foneTracks:
   - {fileID: 8300000, guid: f54be34d928b20e4bbea0f2d5d88eb61, type: 3}
   - {fileID: 8300000, guid: f54be34d928b20e4bbea0f2d5d88eb61, type: 3}
