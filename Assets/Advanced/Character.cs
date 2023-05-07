@@ -194,6 +194,13 @@ public class Character : MonoBehaviour
                 RestoreFoneMusic();
             }
         }
+
+        if (!sounds.isPlaying)
+        {
+            sounds.clip = foneTracks[0];
+            sounds.Stop();
+            sounds.Play();
+        }
     }
 
     protected virtual void HandleJump()
