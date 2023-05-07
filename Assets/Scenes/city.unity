@@ -2438,6 +2438,18 @@ PrefabInstance:
       propertyPath: SequenceHitCount
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 9144437375536358428, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
+      propertyPath: m_Size.x
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 9144437375536358428, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
+      propertyPath: m_Size.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9144437375536358428, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
+      propertyPath: m_Size.z
+      value: 0.19
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
 --- !u!1001 &238066190
@@ -7048,6 +7060,14 @@ PrefabInstance:
     - target: {fileID: 1678859717, guid: 9c760510786d08b4185cddf971254781, type: 3}
       propertyPath: SequenceHitCount
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 341026435121402434, guid: 9c760510786d08b4185cddf971254781, type: 3}
+      propertyPath: m_Size.x
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 341026435121402434, guid: 9c760510786d08b4185cddf971254781, type: 3}
+      propertyPath: m_Size.z
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4696213365351047825, guid: 9c760510786d08b4185cddf971254781, type: 3}
       propertyPath: m_RootOrder
@@ -16497,6 +16517,7 @@ GameObject:
   - component: {fileID: 1640535640}
   - component: {fileID: 1640535639}
   - component: {fileID: 1640535642}
+  - component: {fileID: 1640535643}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -16604,6 +16625,18 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1640535643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640535638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7bc1dfc4ed99b4882b2a90bcff1402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1641801976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16864,10 +16897,6 @@ PrefabInstance:
     - target: {fileID: 611018383919590759, guid: 63d52106ee4cae0438deef9f8a85afd3, type: 3}
       propertyPath: m_Name
       value: AlpacaPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 611018383919590759, guid: 63d52106ee4cae0438deef9f8a85afd3, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63d52106ee4cae0438deef9f8a85afd3, type: 3}
