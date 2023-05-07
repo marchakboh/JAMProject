@@ -52,14 +52,17 @@ public class Character : MonoBehaviour
     private GameObject currentCar = null;
     private float KickResetTimer = 0f;
 
-    private AudioSource sequence_sound;
+    private AudioSource sounds;
+
+    private string paused_music_name;
+    private float paused_music_position;
 
     private void Awake()
     {
         controller  = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         animator    = GetComponent<Animator>();
-        sequence_sound = GetComponent<AudioSource>();
+        sounds      = GetComponent<AudioSource>();
         input       = new ControlsInput();
     }
 
@@ -86,8 +89,8 @@ public class Character : MonoBehaviour
         input.Pause.Disable();
         input.ShopAction.Disable();
 
-        sequence_sound.clip = foneTracks[0];
-        sequence_sound.Play();
+        sounds.clip = foneTracks[0];
+        sounds.Play();
     }
 
     private void OnEnable()
@@ -354,7 +357,12 @@ public class Character : MonoBehaviour
         input.Controls.Disable();
         input.Sequence.Enable();
         IsSequenceNow = true;
-        sequence_sound.Play();
+
+        paused_music_name = sounds.clip.name;
+        paused_music_position = sounds.time;
+        sounds.Stop();
+        sounds.clip = onCarMusic;        
+        sounds.Play();
     }
 
     private void TryOpenPauseMenu(InputAction.CallbackContext ctx)
@@ -405,7 +413,7 @@ public class Character : MonoBehaviour
         input.Sequence.Disable();
         IsSequenceNow = false;
         animator.SetBool("Kick", false);
-        sequence_sound.Stop();
+        RestoreFoneMusic();
         Debug.Log("Fail");
     }
 
@@ -416,8 +424,26 @@ public class Character : MonoBehaviour
         input.Sequence.Disable();
         IsSequenceNow = false;
         animator.SetBool("Kick", false);
-        sequence_sound.Stop();
+        RestoreFoneMusic();
         Debug.Log("Success");
+    }
+
+    private void RestoreFoneMusic()
+    {
+        if (paused_music_name.Length == 0) return;
+
+        sounds.Stop();
+        for (int i = 0; i < foneTracks.Length; i++)
+        {
+            if (foneTracks[i].name == paused_music_name)
+            {
+                sounds.clip = foneTracks[i];
+                sounds.time = paused_music_position;
+                Debug.Log(sounds.time);
+                sounds.Play();
+                break;
+            }
+        }
     }
 
     public void OnInputSourceChanged(PlayerInput playerInput)

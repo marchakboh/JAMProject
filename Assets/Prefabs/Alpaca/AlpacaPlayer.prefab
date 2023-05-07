@@ -213,12 +213,13 @@ MonoBehaviour:
   GravityValue: -9.81
   IsGamepad: 0
   MovementSmooting: 10
-  RotationSmoothing: 0.8
+  RotationSmoothing: 0.2
   CinemachineCamera: {fileID: 0}
   MainCamera: {fileID: 0}
   SequenceCanvasObject: {fileID: 0}
   PauseMenuObject: {fileID: 0}
   ShopMenuObject: {fileID: 0}
+  PlayerScreenObject: {fileID: 0}
   OnKickSound: {fileID: 8300000, guid: c949cf9e724df1c4dbe60756bcd41660, type: 3}
   onCarMusic: {fileID: 8300000, guid: 0e43f5d9ed3e9ef4dbc4d5b222012168, type: 3}
   foneTracks:
