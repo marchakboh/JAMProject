@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
+using UnityEngine.SceneManagement;
 public class CarInteraction : MonoBehaviour
 {
     [SerializeField] ParticleSystem rings;
@@ -39,6 +40,10 @@ public class CarInteraction : MonoBehaviour
         if (hit_count == SequenceHitCount)
         {
             textObject.SetActive(false);
+            if (isLastCar)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
             return true;
         }
 
