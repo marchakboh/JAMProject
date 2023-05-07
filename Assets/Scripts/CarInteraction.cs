@@ -35,6 +35,7 @@ public class CarInteraction : MonoBehaviour
         hit_count++;
         if (hit_count == SequenceHitCount)
         {
+            textObject.SetActive(false);
             return true;
         }
 
