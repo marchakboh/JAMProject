@@ -59,6 +59,7 @@ public class Character : MonoBehaviour
 
     private int xp = 0;
     private int money = 0;
+    private int mylvl = 1;
 
     private void Awake()
     {
@@ -338,7 +339,7 @@ public class Character : MonoBehaviour
     {
         if (!currentCar) return;
         
-        //cameraControl.LockFocus();
+        if (currentCar.GetComponent<CarInteraction>().GetLVLLock() > mylvl) return;
 
         Vector2 onKickReversePosition = new Vector2(transform.position.x - currentCar.transform.position.x, transform.position.y - currentCar.transform.position.y);
         float need_ang = Mathf.Atan2(onKickReversePosition.x, onKickReversePosition.y);
@@ -524,7 +525,7 @@ public class Character : MonoBehaviour
             lvl = 4;
             delta = 1.0f;
         }
-        Debug.Log("delta " + delta);
+        mylvl = lvl;
         playerUI.SetMoneyCount(money);
         playerUI.SetXPValue(delta);
         playerUI.SetLVL(lvl);

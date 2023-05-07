@@ -12,6 +12,7 @@ public class CarInteraction : MonoBehaviour
     [SerializeField] int MoneyCount;
     [SerializeField] int XP_Count;
     [SerializeField] int LvlLock;
+    [SerializeField] bool IsZoneCar = false;
 
     [SerializeField] private bool isLastCar;
 
@@ -40,6 +41,10 @@ public class CarInteraction : MonoBehaviour
         if (hit_count == SequenceHitCount)
         {
             textObject.SetActive(false);
+            if (IsZoneCar)
+            {
+                transform.gameObject.SetActive(false);
+            }
             if (isLastCar)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -68,6 +73,11 @@ public class CarInteraction : MonoBehaviour
     public int GetMoneyPrize()
     {
         return MoneyCount;
+    }
+
+    public int GetLVLLock()
+    {
+        return LvlLock;
     }
 
     void OnTriggerEnter(Collider other)
