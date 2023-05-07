@@ -446,6 +446,13 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void UnlockEquipment(string eqv_name, int mont_spend, int xp_earn)
+    {
+        Debug.Log(eqv_name);
+        Debug.Log(mont_spend);
+        Debug.Log(xp_earn);
+    }
+
     public void OnInputSourceChanged(PlayerInput playerInput)
     {
         IsGamepad = playerInput.currentControlScheme.Equals("Gamepad") ? true : false;

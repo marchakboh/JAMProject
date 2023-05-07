@@ -68,7 +68,22 @@ public class Shop : MonoBehaviour
         }
         return false;
     }
-    public void BuyCenterElement(){
-        _showcase.transform.GetChild(_currentIndex).GetComponent<ShopItem>().BuyItem();
+    public bool BuyCenterElement(){
+        return _showcase.transform.GetChild(_currentIndex).GetComponent<ShopItem>().BuyItem();
+    }
+
+    public string GetCurrentName()
+    {
+        return _showcase.transform.GetChild(_currentIndex).GetComponent<ShopItem>().GetId();
+    }
+    
+    public int GetCurrentPrice()
+    {
+        return _showcase.transform.GetChild(_currentIndex).GetComponent<ShopItem>().GetPrice();
+    }
+    
+    public int GetCurrentBonus()
+    {
+        return _showcase.transform.GetChild(_currentIndex).GetComponent<ShopItem>().GetBonus();
     }
 }

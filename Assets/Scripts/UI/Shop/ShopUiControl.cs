@@ -51,7 +51,10 @@ public class ShopUiControl : MonoBehaviour
 
     private void TryBuy(InputAction.CallbackContext ctx)
     {
-        shopInstance.BuyCenterElement();
+        if (shopInstance.BuyCenterElement())
+        {
+            PlayerCharacter.GetComponent<AlpacaCharacter>().UnlockEquipment(shopInstance.GetCurrentName(), shopInstance.GetCurrentPrice(), shopInstance.GetCurrentBonus());
+        }
     }
 
     private void CloseShop(InputAction.CallbackContext ctx)
