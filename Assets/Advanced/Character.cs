@@ -57,6 +57,9 @@ public class Character : MonoBehaviour
     private string paused_music_name;
     private float paused_music_position;
 
+    private int xp = 0;
+    private int money = 0;
+
     private void Awake()
     {
         controller  = GetComponent<CharacterController>();
@@ -419,13 +422,18 @@ public class Character : MonoBehaviour
 
     public void FinishSequence()
     {
-        RemoveCurrentInteractable();
         input.Controls.Enable();
         input.Sequence.Disable();
         IsSequenceNow = false;
         animator.SetBool("Kick", false);
         RestoreFoneMusic();
         Debug.Log("Success");
+        CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
+        xp += car_script.GetXPPrize();
+        money += car_script.GetMoneyPrize();
+        UpdatePlayerUI();
+
+        RemoveCurrentInteractable();
     }
 
     private void RestoreFoneMusic()
@@ -446,11 +454,93 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void UnlockEquipment(string eqv_name, int mont_spend, int xp_earn)
+    public void UnlockEquipment(string eqv_name, int money_spend, int xp_earn)
     {
-        Debug.Log(eqv_name);
-        Debug.Log(mont_spend);
-        Debug.Log(xp_earn);
+        string item_name = "";
+        if (eqv_name == "Ring 1")
+        {
+            item_name = "Ring3";
+        }
+        if (eqv_name == "Ring 2")
+        {
+            item_name = "Ring4";
+        }
+        if (eqv_name == "Ring 3")
+        {
+            item_name = "Ring5";
+        }
+        if (eqv_name == "Neclace 3")
+        {
+            item_name = "Neclace3";
+        }
+        if (eqv_name == "Neclace 2")
+        {
+            item_name = "Neclace2";
+        }
+        if (eqv_name == "Neclace 1")
+        {
+            item_name = "Neclace1";
+        }
+        if (eqv_name == "Crown 1")
+        {
+            item_name = "Crown2";
+        }
+
+        if (money_spend < money) return;
+
+        money -= money_spend;
+        xp += xp_earn;
+
+        UpdatePlayerUI();
+
+        Debug.Log(item_name);
+        GameObject obj = RecursiveFindChild(transform.gameObject, item_name);
+       
+        obj.SetActive(true);
+    }
+
+    public void UpdatePlayerUI()
+    {
+        PlayerUI playerUI = PlayerScreenObject.GetComponent<PlayerUI>();
+        int lvl = 1;
+        float delta = xp / 600.0f;
+        if (xp >= 600)
+        {
+            lvl = 2;
+            delta = xp / 2400.0f;
+        }
+        if (xp >= 2400)
+        {
+            lvl = 3;
+            delta = xp / 4400.0f;
+        }
+        if (xp >= 4400)
+        {
+            lvl = 4;
+            delta = 1.0f;
+        }
+        Debug.Log("delta " + delta);
+        playerUI.SetMoneyCount(money);
+        playerUI.SetXPValue(delta);
+        playerUI.SetLVL(lvl);
+    }
+
+    private GameObject RecursiveFindChild(GameObject obj, string tag)
+    {
+        for (int index = 0; index < obj.transform.childCount; index++)
+        {
+            if (obj.transform.GetChild(index).name == tag)
+            {
+                return obj.transform.GetChild(index).gameObject;
+            }
+
+            GameObject child_child = RecursiveFindChild(obj.transform.GetChild(index).gameObject, tag);
+            if (child_child)
+            {
+                return child_child;
+            }
+        }
+        return null;
     }
 
     public void OnInputSourceChanged(PlayerInput playerInput)

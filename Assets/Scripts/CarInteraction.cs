@@ -60,6 +60,16 @@ public class CarInteraction : MonoBehaviour
         canInteract = false;
     }
 
+    public int GetXPPrize()
+    {
+        return XP_Count;
+    }
+
+    public int GetMoneyPrize()
+    {
+        return MoneyCount;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player" && canInteract)
