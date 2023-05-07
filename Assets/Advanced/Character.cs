@@ -454,6 +454,11 @@ public class Character : MonoBehaviour
         }
     }
 
+    public bool CanSpendMoney(int count)
+    {
+        return money >= count;
+    }
+
     public void UnlockEquipment(string eqv_name, int money_spend, int xp_earn)
     {
         string item_name = "";
