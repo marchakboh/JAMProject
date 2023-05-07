@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5504311788238000743}
-  m_LocalRotation: {x: 0.11383572, y: -0.000000016920922, z: 0.0000000019388082, w: 0.99349964}
+  m_LocalRotation: {x: 0.113835715, y: 0.00000001797576, z: -0.000000002059672, w: 0.99349964}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -483,7 +483,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5504311789131668538}
-  m_LocalRotation: {x: 0.09574564, y: 0.000000008563665, z: -8.2371787e-10, w: 0.99540585}
+  m_LocalRotation: {x: 0.09574564, y: -0.000000008563665, z: 8.2371787e-10, w: 0.99540585}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -549,7 +549,6 @@ GameObject:
   - component: {fileID: 5504311789309921393}
   - component: {fileID: 5504311789309921399}
   - component: {fileID: 5504311789309921394}
-  - component: {fileID: 7759570694670967361}
   m_Layer: 0
   m_Name: CharacterCamera
   m_TagString: Untagged
@@ -720,6 +719,66 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 8540d2d5-9569-465b-af78-890b149dff2a
     m_ActionName: Controls/Sprint[/XInputControllerWindows/leftTrigger,/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6a75b8cd-0ede-44e4-89ef-c91097734624
+    m_ActionName: Controls/Pause[/Keyboard/escape,/XInputControllerWindows/leftShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3bded9bc-bb5d-4a2e-897b-cf180d71422a
+    m_ActionName: Controls/Interact[/XInputControllerWindows/buttonWest,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b455352a-933b-41b6-b2ca-ba674f63d9e8
+    m_ActionName: Controls/Shop[/Keyboard/i,/XInputControllerWindows/rightStickPress]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 45393e88-7dbc-4fc1-b02e-e2fc000c30ca
+    m_ActionName: ShopAction/MoveActionRight[/XInputControllerWindows/dpad/right,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5cf8ad8d-890a-463e-b790-b935af0f759b
+    m_ActionName: ShopAction/MoveActionLeft[/XInputControllerWindows/dpad/left,/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2cd31bca-124f-4eb3-9406-84cf5dcf1bb7
+    m_ActionName: ShopAction/BuyButtonPressed[/Keyboard/l,/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1def899b-1f42-42f9-9f0e-069d939f73c5
+    m_ActionName: ShopAction/Close[/XInputControllerWindows/leftShoulder,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b179e81c-4042-4edf-8f51-c5079a995125
+    m_ActionName: Sequence/A[/XInputControllerWindows/buttonSouth,/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1ca9ed98-76b8-4508-aa1a-c700c6802703
+    m_ActionName: Sequence/Y[/XInputControllerWindows/buttonNorth,/Keyboard/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e513302e-c919-4aa3-a0ac-fc6df9443610
+    m_ActionName: Sequence/B[/XInputControllerWindows/buttonEast,/Keyboard/b]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d542e1a9-c001-48f2-8989-22a64b3e1e62
+    m_ActionName: Sequence/X[/XInputControllerWindows/buttonWest,/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9634f00b-6fe8-4220-bc06-7b79a22f59ab
+    m_ActionName: Pause/Up[/XInputControllerWindows/dpad/up,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e6564dd3-9a81-4188-9b8b-2f340423a300
+    m_ActionName: Pause/Down[/XInputControllerWindows/dpad/down,/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 75dfd06b-7e6e-4dd1-aef6-3e9c49fea4d9
+    m_ActionName: Pause/Select[/XInputControllerWindows/buttonWest,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2cd985d5-5054-46cf-95f9-fb575f661df4
+    m_ActionName: Pause/Close[/XInputControllerWindows/leftShoulder,/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controls
@@ -739,36 +798,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LookSpeed_X: 200
   LookSpeed_Y: 1
---- !u!114 &7759570694670967361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5504311789309921395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CollideAgainst:
-    serializedVersion: 2
-    m_Bits: 1
-  m_IgnoreTag: 
-  m_TransparentLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_MinimumDistanceFromTarget: 0.1
-  m_AvoidObstacles: 1
-  m_DistanceLimit: 0
-  m_MinimumOcclusionTime: 0
-  m_CameraRadius: 0.1
-  m_Strategy: 0
-  m_MaximumEffort: 4
-  m_SmoothingTime: 0
-  m_Damping: 0
-  m_DampingWhenOccluded: 0
-  m_OptimalTargetDistance: 0
 --- !u!1 &5504311790032580728
 GameObject:
   m_ObjectHideFlags: 3
