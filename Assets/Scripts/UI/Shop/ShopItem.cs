@@ -48,8 +48,23 @@ public class ShopItem : MonoBehaviour
         _bonus.text = ("Respect +" + bonus.ToString());
     }
 
+    public string GetId()
+    {
+        return _name.text;
+    }
 
-    public void BuyItem()
+    public int GetPrice()
+    {
+        return price;
+    }
+
+    public int GetBonus()
+    {
+        return bonus;
+    }
+
+
+    public bool BuyItem()
     {
         ///TO DO decoment code and make a singleton
         if(_price.text != "Sold")
@@ -61,9 +76,14 @@ public class ShopItem : MonoBehaviour
        // info.addRespect(bonus);
         _buyButton.GetComponent<Button>().enabled = false;
         _price.text = "Sold";
+        return true;
         
         }
         
+        }
+        else
+        {
+            return false;
         }
     }
 }
