@@ -433,7 +433,6 @@ public class Character : MonoBehaviour
         IsSequenceNow = false;
         animator.SetBool("Kick", false);
         RestoreFoneMusic();
-        Debug.Log("Fail");
     }
 
     public void FinishSequence()
@@ -447,7 +446,6 @@ public class Character : MonoBehaviour
         sounds.Play();
         isSequenceMusic = true;
         //RestoreFoneMusic();
-        Debug.Log("Success");
         CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
         xp += car_script.GetXPPrize();
         money += car_script.GetMoneyPrize();
@@ -467,7 +465,6 @@ public class Character : MonoBehaviour
             {
                 sounds.clip = foneTracks[i];
                 sounds.time = paused_music_position;
-                Debug.Log(sounds.time);
                 sounds.Play();
                 break;
             }
@@ -482,43 +479,42 @@ public class Character : MonoBehaviour
     public void UnlockEquipment(string eqv_name, int money_spend, int xp_earn)
     {
         string item_name = "";
-        if (eqv_name == "Ring 1")
+        if (eqv_name.Equals("Ring 1"))
         {
             item_name = "Ring3";
         }
-        if (eqv_name == "Ring 2")
+        if (eqv_name.Equals("Ring 2"))
         {
             item_name = "Ring4";
         }
-        if (eqv_name == "Ring 3")
+        if (eqv_name.Equals("Ring 3"))
         {
             item_name = "Ring5";
         }
-        if (eqv_name == "Neclace 3")
+        if (eqv_name.Equals("Neclace 3"))
         {
-            item_name = "Neclace3";
+            item_name = "Necklace3";
         }
-        if (eqv_name == "Neclace 2")
+        if (eqv_name.Equals("Neclace 2"))
         {
-            item_name = "Neclace2";
+            item_name = "Necklace2";
         }
-        if (eqv_name == "Neclace 1")
+        if (eqv_name.Equals("Neclace 1"))
         {
-            item_name = "Neclace1";
+            item_name = "Necklace1";
         }
-        if (eqv_name == "Crown 1")
+        if (eqv_name.Equals("Crown 1"))
         {
             item_name = "Crown2";
         }
 
-        if (money_spend < money) return;
+        if (money_spend > money) return;
 
         money -= money_spend;
         xp += xp_earn;
 
         UpdatePlayerUI();
 
-        Debug.Log(item_name);
         GameObject obj = RecursiveFindChild(transform.gameObject, item_name);
        
         obj.SetActive(true);

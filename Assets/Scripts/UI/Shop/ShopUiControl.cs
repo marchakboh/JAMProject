@@ -36,7 +36,6 @@ public class ShopUiControl : MonoBehaviour
 
     private void TryShopRight(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Left");
         startIndex++;
         if (!shopInstance.SelectItemAt(startIndex))
             startIndex--;
@@ -51,7 +50,10 @@ public class ShopUiControl : MonoBehaviour
 
     private void TryBuy(InputAction.CallbackContext ctx)
     {
-        if (!PlayerCharacter.GetComponent<AlpacaCharacter>().CanSpendMoney(shopInstance.GetCurrentPrice())) return;
+        if (!PlayerCharacter.GetComponent<AlpacaCharacter>().CanSpendMoney(shopInstance.GetCurrentPrice())) 
+        {
+            return;
+        }
 
         if (shopInstance.BuyCenterElement())
         {
