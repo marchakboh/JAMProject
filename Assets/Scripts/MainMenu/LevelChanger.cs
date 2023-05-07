@@ -35,4 +35,10 @@ public class LevelChanger : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void Quit()
+    {
+        AnimationFade();
+        Application.Quit();
+    }
 }
