@@ -456,6 +456,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1922842207}
     m_Modifications:
+    - target: {fileID: 1682163471156919271, guid: 0a5a1686fb13cf641a099673f3e54dd1, type: 3}
+      propertyPath: LvlLock
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682163471156919271, guid: 0a5a1686fb13cf641a099673f3e54dd1, type: 3}
+      propertyPath: XP_Count
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682163471156919271, guid: 0a5a1686fb13cf641a099673f3e54dd1, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682163471156919271, guid: 0a5a1686fb13cf641a099673f3e54dd1, type: 3}
+      propertyPath: SequenceHitCount
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8216836151183424565, guid: 0a5a1686fb13cf641a099673f3e54dd1, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1975,6 +1991,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beatall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
+      propertyPath: LvlLock
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
+      propertyPath: XP_Count
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
+      propertyPath: SequenceHitCount
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
 --- !u!4 &193827795 stripped
@@ -2385,6 +2417,22 @@ PrefabInstance:
     - target: {fileID: 1834192375829202504, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180.454
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537952380081636690, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
+      propertyPath: LvlLock
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537952380081636690, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
+      propertyPath: XP_Count
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537952380081636690, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537952380081636690, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
+      propertyPath: SequenceHitCount
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
@@ -3410,6 +3458,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1182280519669236257, guid: 130754f3988dabd40aca47d3da2a38f6, type: 3}
+      propertyPath: LvlLock
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182280519669236257, guid: 130754f3988dabd40aca47d3da2a38f6, type: 3}
+      propertyPath: XP_Count
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182280519669236257, guid: 130754f3988dabd40aca47d3da2a38f6, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182280519669236257, guid: 130754f3988dabd40aca47d3da2a38f6, type: 3}
+      propertyPath: SequenceHitCount
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2067805131828468153, guid: 130754f3988dabd40aca47d3da2a38f6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4357,6 +4421,22 @@ PrefabInstance:
     - target: {fileID: 4205622209589842171, guid: 415cc8bc548a95f48bbc0ee85f5062b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456283671206688533, guid: 415cc8bc548a95f48bbc0ee85f5062b7, type: 3}
+      propertyPath: LvlLock
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456283671206688533, guid: 415cc8bc548a95f48bbc0ee85f5062b7, type: 3}
+      propertyPath: XP_Count
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456283671206688533, guid: 415cc8bc548a95f48bbc0ee85f5062b7, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456283671206688533, guid: 415cc8bc548a95f48bbc0ee85f5062b7, type: 3}
+      propertyPath: SequenceHitCount
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 415cc8bc548a95f48bbc0ee85f5062b7, type: 3}
@@ -6949,6 +7029,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1922842207}
     m_Modifications:
+    - target: {fileID: 1678859717, guid: 9c760510786d08b4185cddf971254781, type: 3}
+      propertyPath: LvlLock
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678859717, guid: 9c760510786d08b4185cddf971254781, type: 3}
+      propertyPath: XP_Count
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678859717, guid: 9c760510786d08b4185cddf971254781, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678859717, guid: 9c760510786d08b4185cddf971254781, type: 3}
+      propertyPath: SequenceHitCount
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4696213365351047825, guid: 9c760510786d08b4185cddf971254781, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -8093,6 +8189,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1922842207}
     m_Modifications:
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: LvlLock
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: XP_Count
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: SequenceHitCount
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5771715668209403719, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
       propertyPath: m_Name
       value: Toyoyo Highlight
@@ -9398,6 +9510,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beatall (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
+      propertyPath: LvlLock
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
+      propertyPath: XP_Count
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
+      propertyPath: SequenceHitCount
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
 --- !u!1001 &923431812
@@ -9943,6 +10071,22 @@ PrefabInstance:
     - target: {fileID: 934915919946343126, guid: 130754f3988dabd40aca47d3da2a38f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182280519669236257, guid: 130754f3988dabd40aca47d3da2a38f6, type: 3}
+      propertyPath: LvlLock
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182280519669236257, guid: 130754f3988dabd40aca47d3da2a38f6, type: 3}
+      propertyPath: XP_Count
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182280519669236257, guid: 130754f3988dabd40aca47d3da2a38f6, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182280519669236257, guid: 130754f3988dabd40aca47d3da2a38f6, type: 3}
+      propertyPath: SequenceHitCount
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 130754f3988dabd40aca47d3da2a38f6, type: 3}
@@ -10619,6 +10763,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1922842207}
     m_Modifications:
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: LvlLock
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: XP_Count
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: SequenceHitCount
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5771715668209403719, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
       propertyPath: m_Name
       value: Toyoyo Highlight (2)
@@ -10951,6 +11111,18 @@ PrefabInstance:
     - target: {fileID: 8797726167675927272, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
       propertyPath: m_Name
       value: Beatall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
+      propertyPath: LvlLock
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
+      propertyPath: XP_Count
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
+      propertyPath: MoneyCount
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9108011870575047746, guid: 50686f5ede10b1e49a2cf0dacefcace5, type: 3}
       propertyPath: SequenceHitCount
@@ -12268,6 +12440,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6537952380081636690, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
+      propertyPath: LvlLock
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537952380081636690, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
+      propertyPath: XP_Count
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537952380081636690, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537952380081636690, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
+      propertyPath: SequenceHitCount
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c4bcbce44613148a7c7a3e67fe063c, type: 3}
 --- !u!1001 &1221917445
@@ -12277,6 +12465,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1922842207}
     m_Modifications:
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: LvlLock
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: XP_Count
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: SequenceHitCount
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5411563832080475794, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -12358,6 +12562,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1922842207}
     m_Modifications:
+    - target: {fileID: 1682163471156919271, guid: 0a5a1686fb13cf641a099673f3e54dd1, type: 3}
+      propertyPath: LvlLock
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682163471156919271, guid: 0a5a1686fb13cf641a099673f3e54dd1, type: 3}
+      propertyPath: XP_Count
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682163471156919271, guid: 0a5a1686fb13cf641a099673f3e54dd1, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682163471156919271, guid: 0a5a1686fb13cf641a099673f3e54dd1, type: 3}
+      propertyPath: SequenceHitCount
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8216836151183424565, guid: 0a5a1686fb13cf641a099673f3e54dd1, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -16388,15 +16608,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5504311788238000741, guid: 897cfed0499f1974582caa2a1a3e28db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11383574
+      value: 0.11383572
       objectReference: {fileID: 0}
     - target: {fileID: 5504311788238000741, guid: 897cfed0499f1974582caa2a1a3e28db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017444417
+      value: 0.000000016920925
       objectReference: {fileID: 0}
     - target: {fileID: 5504311788238000741, guid: 897cfed0499f1974582caa2a1a3e28db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000019987907
+      value: -0.0000000019388084
       objectReference: {fileID: 0}
     - target: {fileID: 5504311789131668536, guid: 897cfed0499f1974582caa2a1a3e28db, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20563,6 +20783,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1922842207}
     m_Modifications:
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: LvlLock
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: XP_Count
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291162373046781495, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
+      propertyPath: SequenceHitCount
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5411563832080475794, guid: 9204cef29361b9e43952e870a4cbe418, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -20966,6 +21202,22 @@ PrefabInstance:
     - target: {fileID: 8797726167675927272, guid: c4067d0cb44276546934b3e909d883da, type: 3}
       propertyPath: m_Name
       value: oldCar
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: c4067d0cb44276546934b3e909d883da, type: 3}
+      propertyPath: LvlLock
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: c4067d0cb44276546934b3e909d883da, type: 3}
+      propertyPath: XP_Count
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: c4067d0cb44276546934b3e909d883da, type: 3}
+      propertyPath: MoneyCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108011870575047746, guid: c4067d0cb44276546934b3e909d883da, type: 3}
+      propertyPath: SequenceHitCount
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4067d0cb44276546934b3e909d883da, type: 3}
