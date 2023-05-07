@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0db8b337c7b204184985b1ec10b7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CirleDelta: 0.001
+  CirleDelta: 0.01
   items:
   - {fileID: 3031670074043465945}
   - {fileID: 3031670074974829345}
