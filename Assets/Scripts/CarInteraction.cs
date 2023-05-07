@@ -10,6 +10,7 @@ public class CarInteraction : MonoBehaviour
     [SerializeField] int SequenceHitCount;
     [SerializeField] int MoneyCount;
     [SerializeField] int XP_Count;
+    [SerializeField] int LvlLock;
 
     private GameObject textObject;
     private bool canInteract = true;
