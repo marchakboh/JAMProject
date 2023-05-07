@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(PlayerInput))]
+
 public class Character : MonoBehaviour
 {
     [SerializeField] private float WalkSpeed = 5f;
@@ -19,6 +20,11 @@ public class Character : MonoBehaviour
     [SerializeField] private GameObject PauseMenuObject;
     [SerializeField] private GameObject ShopMenuObject;
     [SerializeField] private AudioClip OnKickSound;
+
+    [SerializeField] private AudioClip onCarMusic;
+
+    [SerializeField] private AudioClip[] foneTracks;
+
     [Range(0, 1)]
     [SerializeField] private float OnKickSoundVolume;
 
@@ -78,6 +84,9 @@ public class Character : MonoBehaviour
         input.Sequence.Disable();
         input.Pause.Disable();
         input.ShopAction.Disable();
+
+        sequence_sound.clip = foneTracks[0];
+        sequence_sound.Play();
     }
 
     private void OnEnable()
@@ -344,7 +353,6 @@ public class Character : MonoBehaviour
         input.Controls.Disable();
         input.Sequence.Enable();
         IsSequenceNow = true;
-
         sequence_sound.Play();
     }
 
