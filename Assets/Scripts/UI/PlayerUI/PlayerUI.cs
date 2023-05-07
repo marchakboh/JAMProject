@@ -23,6 +23,9 @@ public class PlayerUI : MonoBehaviour
         money_text = canva.Find("MoneyText").gameObject.GetComponent<TMPro.TextMeshProUGUI>();
 
         xp_slider.maxValue = 1f;
+        SetLVL(1);
+        SetXPValue(0.0f);
+        SetMoneyCount(0);
     }
 
     public void SetXPValue(float value)

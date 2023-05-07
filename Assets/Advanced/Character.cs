@@ -18,6 +18,7 @@ public class Character : MonoBehaviour
     [SerializeField] private GameObject SequenceCanvasObject;
     [SerializeField] private GameObject PauseMenuObject;
     [SerializeField] private GameObject ShopMenuObject;
+    [SerializeField] private GameObject PlayerScreenObject;
     [SerializeField] private AudioClip OnKickSound;
     [Range(0, 1)]
     [SerializeField] private float OnKickSoundVolume;
