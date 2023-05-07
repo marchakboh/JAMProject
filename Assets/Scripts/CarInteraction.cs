@@ -70,6 +70,11 @@ public class CarInteraction : MonoBehaviour
         return MoneyCount;
     }
 
+    public int GetLVLLock()
+    {
+        return LvlLock;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player" && canInteract)
