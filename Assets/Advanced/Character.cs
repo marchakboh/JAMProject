@@ -106,6 +106,8 @@ public class Character : MonoBehaviour
         {
             targetRotation = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg + MainCamera.transform.eulerAngles.y;
             float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothing);
+            Debug.Log(targetRotation);
+            Debug.Log(rotation);
 
             rotationMoveDelta = 1.0f - Mathf.Abs(rotationVelocity / 200f);
 
@@ -294,6 +296,18 @@ public class Character : MonoBehaviour
         if (!currentCar) return;
         
         cameraControl.ChangeLookAt(currentCar.transform);
+
+        Vector2 onKickReversePosition = new Vector2(transform.position.x - currentCar.transform.position.x, transform.position.y - currentCar.transform.position.y);
+        float need_ang = Mathf.Atan2(onKickReversePosition.x, onKickReversePosition.y);
+        if (need_ang < 0f)
+        {
+            need_ang += 2 * Mathf.PI;
+        }
+        if (need_ang > Mathf.PI * 2)
+        {
+            need_ang -= Mathf.PI * 2;
+        }
+        transform.rotation = Quaternion.Euler(.0f, need_ang * 180 / Mathf.PI, .0f);
         
         SequenceCanvasObject.SetActive(true);
         SequenceCanvas sequenceCanvas = SequenceCanvasObject.GetComponent<SequenceCanvas>();
