@@ -335,7 +335,7 @@ public class Character : MonoBehaviour
     {
         if (!currentCar) return;
         
-        cameraControl.ChangeLookAt(currentCar.transform);
+        //cameraControl.LockFocus();
 
         Vector2 onKickReversePosition = new Vector2(transform.position.x - currentCar.transform.position.x, transform.position.y - currentCar.transform.position.y);
         float need_ang = Mathf.Atan2(onKickReversePosition.x, onKickReversePosition.y);
