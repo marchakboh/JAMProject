@@ -18,6 +18,9 @@ public class Character : MonoBehaviour
     [SerializeField] private GameObject SequenceCanvasObject;
     [SerializeField] private GameObject PauseMenuObject;
     [SerializeField] private GameObject ShopMenuObject;
+    [SerializeField] private AudioClip OnKickSound;
+    [Range(0, 1)]
+    [SerializeField] private float OnKickSoundVolume;
 
     private CharacterController controller;
     private PlayerInput playerInput;
@@ -40,6 +43,7 @@ public class Character : MonoBehaviour
     private bool IsSequenceNow = false;
 
     private GameObject currentCar = null;
+    private float KickResetTimer = 0f;
 
     private void Awake()
     {
@@ -90,6 +94,7 @@ public class Character : MonoBehaviour
         HandleMovement();
         HandleJump();
         HandleGravity();
+        HandleAdditional();
     }
 
     protected virtual void HandleInput()
@@ -106,8 +111,6 @@ public class Character : MonoBehaviour
         {
             targetRotation = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg + MainCamera.transform.eulerAngles.y;
             float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothing);
-            Debug.Log(targetRotation);
-            Debug.Log(rotation);
 
             rotationMoveDelta = 1.0f - Mathf.Abs(rotationVelocity / 200f);
 
@@ -142,6 +145,19 @@ public class Character : MonoBehaviour
             velocity.y += GravityValue * Time.deltaTime;
             
             //controller.Move(velocity * Time.deltaTime);
+        }
+    }
+
+    protected void HandleAdditional()
+    {
+        if (IsSequenceNow)
+        {
+            KickResetTimer += Time.deltaTime;
+            if (KickResetTimer > 1.2)
+            {
+                animator.SetBool("Kick", false);
+                KickResetTimer = 0f;
+            }
         }
     }
 
@@ -197,6 +213,8 @@ public class Character : MonoBehaviour
             CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
             if (sequenceCanvas.ActionPerform("A"))
             {
+                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), 0.8f);
+                animator.SetBool("Kick", true);
                 if (car_script.TryHit())
                 {
                     FinishSequence();
@@ -223,6 +241,8 @@ public class Character : MonoBehaviour
             CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
             if (sequenceCanvas.ActionPerform("B"))
             {
+                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), 0.8f);
+                animator.SetBool("Kick", true);
                 if (car_script.TryHit())
                 {
                     FinishSequence();
@@ -249,6 +269,8 @@ public class Character : MonoBehaviour
             CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
             if (sequenceCanvas.ActionPerform("X"))
             {
+                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), 0.8f);
+                animator.SetBool("Kick", true);
                 if (car_script.TryHit())
                 {
                     FinishSequence();
@@ -275,6 +297,8 @@ public class Character : MonoBehaviour
             CarInteraction car_script = currentCar.GetComponent<CarInteraction>();
             if (sequenceCanvas.ActionPerform("Y"))
             {
+                AudioSource.PlayClipAtPoint(OnKickSound, transform.TransformPoint(controller.center), 0.8f);
+                animator.SetBool("Kick", true);
                 if (car_script.TryHit())
                 {
                     FinishSequence();
@@ -366,6 +390,7 @@ public class Character : MonoBehaviour
         input.Controls.Enable();
         input.Sequence.Disable();
         IsSequenceNow = false;
+        animator.SetBool("Kick", false);
         Debug.Log("Fail");
     }
 
@@ -375,6 +400,7 @@ public class Character : MonoBehaviour
         input.Controls.Enable();
         input.Sequence.Disable();
         IsSequenceNow = false;
+        animator.SetBool("Kick", false);
         Debug.Log("Success");
     }
 
